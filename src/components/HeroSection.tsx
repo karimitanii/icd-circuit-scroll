@@ -1,5 +1,5 @@
+
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "../lib/gsap";
 import NetworkGraph from "./NetworkGraph";
 
 const HeroSection = () => {
@@ -9,73 +9,50 @@ const HeroSection = () => {
   const scrollCueRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Simple animation using timeouts
+    const headline = headlineRef.current;
+    const paragraph = paragraphRef.current;
+    const scrollCue = scrollCueRef.current;
 
-    // Animation for the hero section
-    gsap.fromTo(
-      headlineRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.5,
+    if (headline) {
+      headline.classList.add("active");
+    }
+
+    setTimeout(() => {
+      if (paragraph) {
+        paragraph.classList.add("active");
       }
-    );
+    }, 300);
 
-    gsap.fromTo(
-      paragraphRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        delay: 0.8,
+    setTimeout(() => {
+      if (scrollCue) {
+        scrollCue.classList.add("active");
       }
-    );
+    }, 600);
 
-    gsap.fromTo(
-      scrollCueRef.current,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1,
-        delay: 1.2,
+    // Scroll effect for parallax
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const scrollPos = window.scrollY;
+        const opacity = Math.max(0, 1 - scrollPos / 500);
+        heroRef.current.style.opacity = opacity.toString();
       }
-    );
-
-    // Parallax effect on scroll
-    gsap.to(heroRef.current, {
-      backgroundPosition: "50% 100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section
       id="hero"
       ref={heroRef}
-      className="section min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 relative overflow-hidden"
-      style={{
-        background: "linear-gradient(to bottom, #ffffff, #f3f4f6)",
-      }}
+      className="section min-h-screen flex flex-col items-center justify-center bg-white relative overflow-hidden"
     >
       <div className="section-content flex flex-col items-center justify-center z-10 pt-20">
         <h1
           ref={headlineRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold font-orbitron text-center mb-6 leading-tight text-black"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold font-orbitron text-center mb-6 leading-tight text-gray-800 opacity-0 transform translate-y-10 transition-all duration-1000"
         >
           Engineering the Future with <br />
           <span className="text-gradient">
@@ -85,7 +62,7 @@ const HeroSection = () => {
 
         <p
           ref={paragraphRef}
-          className="text-lg md:text-xl text-black/80 text-center max-w-3xl mb-12"
+          className="text-lg md:text-xl text-gray-600 text-center max-w-3xl mb-12 opacity-0 transform translate-y-10 transition-all duration-1000 delay-300"
         >
           At ICD, we blend cutting-edge technology with creative solutions to
           transform businesses and public institutions. We're not just building
@@ -94,11 +71,11 @@ const HeroSection = () => {
 
         <div
           ref={scrollCueRef}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 transition-all duration-1000 delay-600"
         >
-          <span className="text-sm text-black/60 mb-2">Scroll to explore</span>
-          <div className="w-6 h-12 rounded-full border-2 border-black/30 flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 bg-black/60 rounded-full animate-scroll-down"></div>
+          <span className="text-sm text-gray-500 mb-2">Scroll to explore</span>
+          <div className="w-6 h-12 rounded-full border-2 border-gray-300 flex items-start justify-center p-2">
+            <div className="w-1.5 h-3 bg-gray-400 rounded-full animate-scroll-down"></div>
           </div>
         </div>
       </div>

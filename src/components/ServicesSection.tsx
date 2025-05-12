@@ -1,5 +1,5 @@
+
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "../lib/gsap";
 
 const services = [
   {
@@ -44,6 +44,20 @@ const services = [
     description:
       "Specialized digital transformation services for government and public institutions, enhancing citizen services.",
   },
+  // New service 1
+  {
+    icon: "🔒",
+    title: "Cybersecurity & Compliance",
+    description:
+      "Protecting your digital assets with advanced security solutions and ensuring compliance with industry regulations and standards.",
+  },
+  // New service 2
+  {
+    icon: "📊",
+    title: "Data Analytics & Business Intelligence",
+    description:
+      "Transforming raw data into actionable insights through powerful analytics tools and customized dashboards for informed decision-making.",
+  },
 ];
 
 const ServicesSection = () => {
@@ -51,46 +65,32 @@ const ServicesSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // Simple animation using Intersection Observer instead of GSAP
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px",
+    };
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 70%",
-        end: "bottom 70%",
-        toggleActions: "play none none reverse",
-      },
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    const serviceCards = document.querySelectorAll(".service-card");
+    serviceCards.forEach((card) => {
+      observer.observe(card as Element);
     });
 
-    tl.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8 }
-    );
-
-    // Animate cards with stagger
-    gsap.fromTo(
-      ".service-card",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".services-grid",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-
     return () => {
-      if (tl) tl.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      observer.disconnect();
     };
   }, []);
 
@@ -98,32 +98,32 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="section reveal bg-gradient-to-b from-black to-icd-dark relative overflow-hidden py-24"
+      className="section reveal bg-white relative overflow-hidden py-24"
     >
       <div className="section-content z-10">
         <h2
           ref={titleRef}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800 reveal"
         >
           Our <span className="text-icd-blue">Services</span>
         </h2>
 
         <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <div key={index} className="service-card group h-full">
+            <div key={index} className="service-card group h-full reveal">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-orbitron mb-3 group-hover:text-icd-blue transition-colors duration-300">
+              <h3 className="text-xl font-orbitron mb-3 text-gray-800 group-hover:text-icd-blue transition-colors duration-300">
                 {service.title}
               </h3>
-              <p className="text-white/80">{service.description}</p>
+              <p className="text-gray-600">{service.description}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Background circuit animation */}
+      {/* Background circuit animation - lighter color for white background */}
       <div className="absolute inset-0 z-0">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>

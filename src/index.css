@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -125,8 +124,24 @@
     transform: translateY(0);
   }
   
+  /* Partner logo scroll animation */
+  .partner-logo {
+    @apply opacity-0 transition-all duration-500 ease-out;
+    transform: translateY(20px);
+  }
+  
+  .partner-logo.active {
+    @apply opacity-100;
+    transform: translateY(0);
+  }
+  
+  .partner-logo.inactive {
+    @apply opacity-0;
+    transform: translateY(20px);
+  }
+  
   .service-card {
-    @apply bg-white/10 backdrop-blur-md rounded-lg p-6 transition-all duration-300 hover:bg-white/20 hover:shadow-lg hover:shadow-icd-blue/20 border border-white/20;
+    @apply bg-gray-50 rounded-lg p-6 transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-icd-blue/10 border border-gray-200;
   }
   
   .particles-bg {
@@ -137,4 +152,34 @@
     height: 100%;
     z-index: -1;
   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
 }
