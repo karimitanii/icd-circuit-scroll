@@ -60,7 +60,7 @@ const Navbar = () => {
             className="h-10 w-10"
           />
           <span className="text-xl font-bold font-orbitron text-white">
-            <span className="text-icd-blue">I</span>CD
+            <span className="text-icd-blue">ICD</span>
           </span>
         </a>
 
@@ -70,7 +70,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-blue/80 hover:text-white transition-colors text-sm font-medium font-robotomono"
+              className="text-blue-500/80 hover:text-white transition-colors text-sm font-medium font-robotomono"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.href);
