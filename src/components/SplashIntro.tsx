@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { gsap } from "gsap";
+import { gsap } from "../lib/gsap";
 
 interface LogoModelProps {
   animate: boolean;
@@ -36,7 +35,7 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
     const timeline = gsap.timeline({
       onComplete: () => {
         setTimeout(() => onComplete(), 500);
-      }
+      },
     });
 
     // Start 3D animation
@@ -44,42 +43,42 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
 
     // Text animation sequence
     timeline
-      .to(".splash-logo", { 
-        opacity: 1, 
-        scale: 1.1, 
-        duration: 1, 
-        ease: "power2.out" 
+      .to(".splash-logo", {
+        opacity: 1,
+        scale: 1.1,
+        duration: 1,
+        ease: "power2.out",
       })
-      .to(".text-innovation", { 
-        opacity: 1, 
-        y: 0, 
+      .to(".text-innovation", {
+        opacity: 1,
+        y: 0,
         duration: 0.8,
-        onComplete: () => setStep(1)
+        onComplete: () => setStep(1),
       })
-      .to(".text-innovation", { 
+      .to(".text-innovation", {
         opacity: 0,
         duration: 0.4,
       })
-      .to(".text-creativity", { 
-        opacity: 1, 
-        y: 0, 
+      .to(".text-creativity", {
+        opacity: 1,
+        y: 0,
         duration: 0.8,
-        onComplete: () => setStep(2)
+        onComplete: () => setStep(2),
       })
-      .to(".text-creativity", { 
+      .to(".text-creativity", {
         opacity: 0,
         duration: 0.4,
       })
-      .to(".text-development", { 
-        opacity: 1, 
-        y: 0, 
+      .to(".text-development", {
+        opacity: 1,
+        y: 0,
         duration: 0.8,
-        onComplete: () => setStep(3)
+        onComplete: () => setStep(3),
       })
-      .to(".splash-container", { 
-        opacity: 0, 
-        duration: 0.8, 
-        delay: 0.5 
+      .to(".splash-container", {
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.5,
       });
 
     return () => {
@@ -98,15 +97,15 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
           <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={3} />
         </Canvas>
       </div>
-      
+
       <div className="splash-logo opacity-0 z-10 mb-8">
-        <img 
-          src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png" 
-          alt="ICD Logo" 
+        <img
+          src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
+          alt="ICD Logo"
           className="w-32 h-32 md:w-40 md:h-40"
         />
       </div>
-      
+
       <div className="relative h-20">
         <h1 className="text-innovation opacity-0 transform translate-y-10 absolute left-0 right-0 text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white">
           Innovation.
