@@ -1,10 +1,10 @@
-
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import SplashIntro from "@/components/SplashIntro";
 import HeroSection from "@/components/HeroSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
 import CeoSection from "@/components/CeoSection";
+import BusinessPartnersSection from "@/components/BusinessPartnersSection";
 import ServicesSection from "@/components/ServicesSection";
 import PartnersSection from "@/components/PartnersSection";
 import ContactSection from "@/components/ContactSection";
@@ -18,14 +18,14 @@ const Index = () => {
     // Setup intersection observers for scroll animations
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      rootMargin: "0px",
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add("active");
           // Once the animation is triggered, we can unobserve the element
           observer.unobserve(entry.target);
         }
@@ -34,8 +34,8 @@ const Index = () => {
 
     // After a short delay to ensure DOM is fully loaded
     const timer = setTimeout(() => {
-      const revealElements = document.querySelectorAll('.reveal');
-      revealElements.forEach(el => observer.observe(el));
+      const revealElements = document.querySelectorAll(".reveal");
+      revealElements.forEach((el) => observer.observe(el));
       setLoading(false);
     }, 500);
 
@@ -50,9 +50,11 @@ const Index = () => {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-icd-dark flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-icd-blue border-t-transparent rounded-full animate-spin"></div>
-    </div>;
+    return (
+      <div className="min-h-screen bg-icd-dark flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-icd-blue border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
   }
 
   return (
@@ -66,6 +68,7 @@ const Index = () => {
             <HeroSection />
             <WhoWeAreSection />
             <CeoSection />
+            <BusinessPartnersSection />
             <ServicesSection />
             <PartnersSection />
             <ContactSection />

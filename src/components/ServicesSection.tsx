@@ -98,7 +98,7 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="section bg-gradient-to-b from-black to-icd-dark relative overflow-hidden py-24"
+      className="section reveal bg-gradient-to-b from-black to-icd-dark relative overflow-hidden py-24"
     >
       <div className="section-content z-10">
         <h2
