@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { MapPin, Phone, Mail } from "lucide-react"; // Import icons
 
 const ContactSection = () => {
   return (
@@ -22,14 +23,30 @@ const ContactSection = () => {
             </h3>
             <p className="text-gray-600 mb-8">
               Have a question or want to discuss a potential project? Reach out
-              to us using the form or email us directly.
+              to us directly!
             </p>
 
             <div className="mb-6">
-              <h4 className="font-orbitron text-icd-blue mb-2">
-                General Inquiries
-              </h4>
-              <p className="text-gray-600 font-robotomono">info@icd-me.com</p>
+              <div className="mb-6 flex items-center space-x-2">
+                <Mail size={16} color="black" />
+                <span className="text-gray-600 font-robotomono">
+                  info@icd-me.com
+                </span>
+              </div>
+            </div>
+
+            <div className="mb-6 flex items-center space-x-2">
+              <Phone size={16} color="black" />
+              <span className="text-gray-600 font-robotomono">
+                PUT NUMBER !!!!!!!!
+              </span>
+            </div>
+
+            <div className="mb-6 flex items-center space-x-2">
+              <MapPin size={16} color="black" />
+              <span className="text-gray-600 font-robotomono">
+                Beirut, Downtown, Allenby St, Py136 bldg, 1st floor
+              </span>
             </div>
 
             <div className="border-t border-gray-200 pt-6 mt-8">

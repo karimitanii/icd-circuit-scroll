@@ -58,7 +58,7 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
               : "opacity-0 transform translate-y-10"
           }`}
         >
-          Innovation.
+          Innovation
         </h1>
         <h1
           className={`text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
@@ -67,7 +67,7 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
               : "opacity-0 transform translate-y-10"
           }`}
         >
-          Creativity.
+          Creativity
         </h1>
         <h1
           className={`text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
@@ -76,7 +76,7 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
               : "opacity-0 transform translate-y-10"
           }`}
         >
-          Development.
+          Development
         </h1>
       </div>
     </div>

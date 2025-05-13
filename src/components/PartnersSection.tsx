@@ -1,16 +1,18 @@
-
 import { useEffect, useRef } from "react";
 
-// Partner logos represented as letters for the example
+// Partner logos and websites
 const partners = [
-  { name: "TechCorp", letter: "T" },
-  { name: "InnovaSys", letter: "I" },
-  { name: "Digital Solutions", letter: "D" },
-  { name: "GlobalTech", letter: "G" },
-  { name: "EvoSystems", letter: "E" },
-  { name: "Quantum Data", letter: "Q" },
-  { name: "Future Networks", letter: "F" },
-  { name: "Adaptive Systems", letter: "A" },
+  { name: "TechCorp", logo: "techcorp.png", website: "https://techcorp.com" },
+  {
+    name: "Kaic.ai",
+    logo: "lovable-uploads/Kaic.ai.png",
+    website: "https://kaic.ai",
+  },
+  {
+    name: "Digital Solutions",
+    logo: "digitalsolutions.png",
+    website: "https://digitalsolutions.com",
+  },
 ];
 
 const PartnersSection = () => {
@@ -40,20 +42,23 @@ const PartnersSection = () => {
     }
 
     // Setup observers for partner logos with appear/disappear effect
-    const logoObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          entry.target.classList.remove("inactive");
-        } else {
-          entry.target.classList.remove("active");
-          entry.target.classList.add("inactive");
-        }
-      });
-    }, { 
-      threshold: 0.5,
-      rootMargin: "-50px 0px"
-    });
+    const logoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            entry.target.classList.remove("inactive");
+          } else {
+            entry.target.classList.remove("active");
+            entry.target.classList.add("inactive");
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "-50px 0px",
+      }
+    );
 
     const logos = document.querySelectorAll(".partner-logo");
     logos.forEach((logo) => {
@@ -86,20 +91,23 @@ const PartnersSection = () => {
             className="partners-carousel flex flex-wrap justify-center md:justify-start md:w-[200%] gap-8 py-8"
           >
             {partners.map((partner, index) => (
-              <div
+              <a
                 key={index}
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="partner-logo flex-shrink-0 w-36 h-36 md:w-48 md:h-48 bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200 hover:border-icd-blue/50 transition-all duration-300 group opacity-0 transform translate-y-10"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-orbitron font-bold text-gray-500 group-hover:text-icd-blue transition-colors duration-300">
-                    {partner.letter}
-                  </div>
-                  <div className="mt-2 font-robotomono text-gray-400 group-hover:text-gray-700 transition-colors duration-300">
-                    {partner.name}
-                  </div>
+                <img
+                  src={partner.logo}
+                  alt={`${partner.name} Logo`}
+                  className="w-full h-full object-cover"
+                />
+                <div className="mt-2 font-robotomono text-gray-400 group-hover:text-gray-700 transition-colors duration-300">
+                  {partner.name}
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -108,9 +116,7 @@ const PartnersSection = () => {
           <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden md:block"></div>
         </div>
 
-        <div className="text-center mt-8 text-gray-500 text-sm hidden md:block">
-          <p>← Scroll horizontally to see more partners →</p>
-        </div>
+        <div className="text-center mt-8 text-gray-500 text-sm hidden md:block"></div>
       </div>
     </section>
   );

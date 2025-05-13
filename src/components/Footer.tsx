@@ -13,7 +13,7 @@ const Footer = () => {
                 className="h-10 w-10"
               />
               <span className="text-2xl font-bold font-orbitron text-white">
-                <span className="text-icd-blue">I</span>CD
+                <span className="text-icd-blue">ICD</span>
               </span>
             </div>
             <p className="text-white/70 mb-6">
