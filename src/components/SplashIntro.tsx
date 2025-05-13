@@ -6,6 +6,7 @@ interface SplashIntroProps {
 
 const SplashIntro = ({ onComplete }: SplashIntroProps) => {
   const [step, setStep] = useState(0);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     // Animation sequence using timeouts instead of GSAP
@@ -22,7 +23,8 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
     }, 4000);
 
     const timer4 = setTimeout(() => {
-      onComplete(); // Complete animation
+      setFadeOut(true); // Start fade-out animation
+      setTimeout(onComplete, 1000); // Complete animation after fade-out
     }, 5500);
 
     return () => {
@@ -35,7 +37,11 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
   }, [onComplete]);
 
   return (
-    <div className="splash-container fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+    <div
+      className={`splash-container fixed inset-0 bg-white flex flex-col items-center justify-center z-50 transition-opacity duration-1000 ${
+        fadeOut ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <div className="splash-logo mb-8 animate-fade-in">
         <img
           src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
