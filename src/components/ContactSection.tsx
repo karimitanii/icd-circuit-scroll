@@ -29,16 +29,7 @@ const ContactSection = () => {
               <h4 className="font-orbitron text-icd-blue mb-2">
                 General Inquiries
               </h4>
-              <p className="text-gray-600 font-robotomono">icd@gmail.com</p>
-            </div>
-
-            <div className="mb-6">
-              <h4 className="font-orbitron text-icd-blue mb-2">
-                Career Opportunities
-              </h4>
-              <p className="text-gray-600 font-robotomono">
-                icd-careers@gmail.com
-              </p>
+              <p className="text-gray-600 font-robotomono">info@icd-me.com</p>
             </div>
 
             <div className="border-t border-gray-200 pt-6 mt-8">
@@ -52,7 +43,12 @@ const ContactSection = () => {
               </p>
               <p className="text-gray-600">
                 Send your CV and cover letter to{" "}
-                <span className="text-icd-blue">icd-careers@gmail.com</span>{" "}
+                <a
+                  className="text-icd-blue"
+                  href="mailto:icd-careers@gmail.com"
+                >
+                  icd-careers@gmail.com
+                </a>{" "}
               </p>
             </div>
           </div>

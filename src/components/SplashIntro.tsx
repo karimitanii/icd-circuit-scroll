@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 interface SplashIntroProps {
@@ -45,24 +44,30 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
         />
       </div>
 
-      <div className="relative h-20">
-        <h1 
-          className={`absolute left-0 right-0 text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
-            step === 1 ? "animate-text-reveal" : "opacity-0 transform translate-y-10"
+      <div className="relative h-20 flex flex-col items-center justify-center">
+        <h1
+          className={`text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
+            step === 1
+              ? "animate-text-reveal"
+              : "opacity-0 transform translate-y-10"
           }`}
         >
           Innovation.
         </h1>
-        <h1 
-          className={`absolute left-0 right-0 text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
-            step === 2 ? "animate-text-reveal" : "opacity-0 transform translate-y-10"
+        <h1
+          className={`text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
+            step === 2
+              ? "animate-text-reveal"
+              : "opacity-0 transform translate-y-10"
           }`}
         >
           Creativity.
         </h1>
-        <h1 
-          className={`absolute left-0 right-0 text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
-            step === 3 ? "animate-text-reveal" : "opacity-0 transform translate-y-10"
+        <h1
+          className={`text-center text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-icd-blue ${
+            step === 3
+              ? "animate-text-reveal"
+              : "opacity-0 transform translate-y-10"
           }`}
         >
           Development.

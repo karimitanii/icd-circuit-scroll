@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -29,7 +29,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/icdcentrebeirut/"
                 className="text-white/60 hover:text-icd-blue transition-colors"
               >
                 <Instagram size={20} />
@@ -86,9 +86,26 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-orbitron mb-4">Contact</h3>
             <ul className="space-y-2 text-white/70">
-              <li>General: icd@gmail.com</li>
-              <li>Careers: icd-careers@gmail.com</li>
-              <li>Support: support@icd.com</li>
+              <li className="flex items-center space-x-2">
+                <Mail size={16} />
+                <span>info@icd-me.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Mail size={16} />
+                <span>icd-careers@gmail.com</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone size={16} />
+                <span>PUT NUMBER !!!</span>{" "}
+                {/* Replace with actual phone number */}
+              </li>
+              <li className="flex items-center space-x-2">
+                <MapPin size={16} />
+                <span>
+                  Beirut,Downtown,Allenby St,Py136 bldg,1st floor
+                </span>{" "}
+                {/* Replace with actual address */}
+              </li>
             </ul>
           </div>
         </div>
