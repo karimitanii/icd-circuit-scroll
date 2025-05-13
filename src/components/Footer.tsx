@@ -2,9 +2,9 @@ import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-icd-dark pt-16 pb-8 px-4 relative z-10">
+    <footer className="bg-[#001F3F] pt-16 pb-8 px-4 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-blue-300/10">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <img
@@ -84,7 +84,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-orbitron mb-4">Contact</h3>
+            <h3 className="text-lg font-orbitron mb-4">Contact Us</h3>
             <ul className="space-y-2 text-white/70">
               <li className="flex items-center space-x-2">
                 <Mail size={16} />
@@ -96,8 +96,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone size={16} />
-                <span>PUT NUMBER !!!</span>{" "}
-                {/* Replace with actual phone number */}
+                <span>+961 71 777795</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone size={16} />
+                <span>+961 71 896000</span>{" "}
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin size={16} />
@@ -110,7 +113,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-6 text-center text-white/50 text-sm">
+        <div className="pt-6 text-center text-blue-200/50 text-sm">
           <p>
             &copy; {new Date().getFullYear()} Innovation Creativity Development
             (ICD). All rights reserved.

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +25,7 @@ const Navbar = () => {
     { name: "Leadership", href: "#ceo" },
     { name: "Services", href: "#services" },
     { name: "Partners", href: "#partners" },
-    { name: "Contact", href: "#contact" },
+    { name: "Career", href: "#career" },
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -41,9 +40,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-6",
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">

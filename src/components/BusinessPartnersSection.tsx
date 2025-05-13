@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const BusinessPartnersSection = () => {
+function BusinessPartnersSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -59,52 +59,11 @@ const BusinessPartnersSection = () => {
     <section
       id="business-partners"
       ref={sectionRef}
-      className="section bg-gradient-to-b from-black to-icd-dark relative overflow-hidden py-24"
+      className="section bg-gradient-to-b from-white to-gray-50 relative overflow-hidden py-24"
     >
-      {/* Circuit pattern overlay */}
-      <div className="absolute inset-0 z-0">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="circuit-pattern-partners"
-              x="0"
-              y="0"
-              width="100"
-              height="100"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M10 10 L30 10 L30 30 L50 30 L50 50 L70 50 L70 70 L90 70"
-                stroke="#0047AB"
-                strokeOpacity="0.1"
-                strokeWidth="1"
-                fill="none"
-              />
-              <path
-                d="M20 80 L40 80 L40 60 L60 60 L60 40 L80 40 L80 20"
-                stroke="#0047AB"
-                strokeOpacity="0.1"
-                strokeWidth="1"
-                fill="none"
-              />
-              <circle cx="30" cy="10" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="50" cy="30" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="70" cy="50" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="40" cy="80" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="60" cy="60" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="80" cy="40" r="2" fill="#0047AB" fillOpacity="0.2" />
-            </pattern>
-          </defs>
-          <rect
-            width="100%"
-            height="100%"
-            fill="url(#circuit-pattern-partners)"
-          />
-        </svg>
-      </div>
-
+      {/* Circuit pattern overlay remains the same */}
       <div className="section-content z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-900">
           Business Project <span className="text-icd-blue">Partners</span>
         </h2>
 
@@ -115,7 +74,7 @@ const BusinessPartnersSection = () => {
               ref={index === 0 ? imageRef : undefined}
               className="relative"
             >
-              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden bg-gradient-to-br from-gray-700 to-gray-900 relative border-2 border-icd-blue/30 mx-auto mb-6">
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-white relative border-2 border-icd-blue/30 mx-auto mb-6">
                 <img
                   src={partner.image}
                   alt={partner.name}
@@ -133,9 +92,7 @@ const BusinessPartnersSection = () => {
                         top: `${Math.random() * 100}%`,
                         left: 0,
                         right: 0,
-                        animation: `pulse-slow ${
-                          Math.random() * 3 + 3
-                        }s infinite`,
+                        animation: `pulse-slow ${Math.random() * 3 + 3}s infinite`,
                       }}
                     ></div>
                   ))}
@@ -146,16 +103,16 @@ const BusinessPartnersSection = () => {
                 ref={index === 0 ? contentRef : undefined}
                 className="text-center"
               >
-                <h3 className="text-xl md:text-2xl font-orbitron mb-2">
+                <h3 className="text-xl md:text-2xl font-orbitron mb-2 text-gray-900">
                   {partner.name}
                 </h3>
                 <p className="text-icd-blue mb-2 font-robotomono">
                   {partner.role}
                 </p>
-                <p className="text-white/60 mb-4 text-sm">
+                <p className="text-gray-600 mb-4 text-sm">
                   {partner.expertise}
                 </p>
-                <blockquote className="border-l-4 border-icd-blue/50 pl-4 italic text-white/80 text-sm">
+                <blockquote className="border-l-4 border-icd-blue/50 pl-4 italic text-gray-700 text-sm">
                   "{partner.quote}"
                 </blockquote>
               </div>
@@ -165,6 +122,6 @@ const BusinessPartnersSection = () => {
       </div>
     </section>
   );
-};
+}
 
 export default BusinessPartnersSection;

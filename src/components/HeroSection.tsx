@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
 import NetworkGraph from "./NetworkGraph";
 
-const HeroSection = () => {
+function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
@@ -87,9 +87,10 @@ const HeroSection = () => {
           ref={paragraphRef}
           className="text-lg md:text-xl text-black/80 text-center max-w-3xl mb-12"
         >
-          At ICD, we blend cutting-edge technology with creative solutions to
-          transform businesses and public institutions. We're not just building
-          systems—we're shaping the digital future.
+          We blend cutting-edge technology with creative solutions.
+          <br />
+          It's not just about building systems—it's about shaping the digital
+          future.
         </p>
 
         <div
@@ -107,6 +108,6 @@ const HeroSection = () => {
       <NetworkGraph />
     </section>
   );
-};
+}
 
 export default HeroSection;
