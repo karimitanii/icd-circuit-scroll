@@ -1,4 +1,3 @@
-
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
@@ -8,56 +7,82 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img 
-                src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png" 
-                alt="ICD Logo" 
-                className="h-10 w-10" 
+              <img
+                src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
+                alt="ICD Logo"
+                className="h-10 w-10"
               />
               <span className="text-2xl font-bold font-orbitron text-white">
                 <span className="text-icd-blue">I</span>CD
               </span>
             </div>
             <p className="text-white/70 mb-6">
-              Innovation, Creativity, Development.<br />
+              Innovation, Creativity, Development.
+              <br />
               Engineering the future through technology.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/60 hover:text-icd-blue transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-white/60 hover:text-icd-blue transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-white/60 hover:text-icd-blue transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-icd-blue transition-colors"
+              >
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-icd-blue transition-colors">
+              <a
+                href="#"
+                className="text-white/60 hover:text-icd-blue transition-colors"
+              >
                 <Instagram size={20} />
               </a>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-orbitron mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#hero" className="text-white/70 hover:text-icd-blue transition-colors">Home</a>
+                <a
+                  href="#hero"
+                  className="text-white/70 hover:text-icd-blue transition-colors"
+                >
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#who-we-are" className="text-white/70 hover:text-icd-blue transition-colors">About Us</a>
+                <a
+                  href="#who-we-are"
+                  className="text-white/70 hover:text-icd-blue transition-colors"
+                >
+                  About Us
+                </a>
               </li>
               <li>
-                <a href="#services" className="text-white/70 hover:text-icd-blue transition-colors">Services</a>
+                <a
+                  href="#services"
+                  className="text-white/70 hover:text-icd-blue transition-colors"
+                >
+                  Services
+                </a>
               </li>
               <li>
-                <a href="#partners" className="text-white/70 hover:text-icd-blue transition-colors">Partners</a>
+                <a
+                  href="#partners"
+                  className="text-white/70 hover:text-icd-blue transition-colors"
+                >
+                  Partners
+                </a>
               </li>
               <li>
-                <a href="#contact" className="text-white/70 hover:text-icd-blue transition-colors">Contact</a>
+                <a
+                  href="#contact"
+                  className="text-white/70 hover:text-icd-blue transition-colors"
+                >
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-orbitron mb-4">Contact</h3>
             <ul className="space-y-2 text-white/70">
@@ -67,9 +92,12 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-6 text-center text-white/50 text-sm">
-          <p>&copy; {new Date().getFullYear()} Innovation Creativity Development (ICD). All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Innovation Creativity Development
+            (ICD). All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
