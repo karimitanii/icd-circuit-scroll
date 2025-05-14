@@ -77,7 +77,7 @@ function HeroSection() {
           ref={headlineRef}
           className="text-4xl md:text-5xl lg:text-6xl font-bold font-orbitron text-center mb-6 leading-tight text-black"
         >
-          Engineering the Future with <br />
+          Let's talk about the future with <br />
           <span className="text-gradient">
             Innovation, Creativity, and Development
           </span>
