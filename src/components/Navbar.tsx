@@ -25,7 +25,8 @@ const Navbar = () => {
     { name: "Leadership", href: "#ceo" },
     { name: "Services", href: "#services" },
     { name: "Partners", href: "#partners" },
-    { name: "Career", href: "#career" },
+    { name: "Careers", href: "#careers" },
+    { name: "Contact Us", href: "#contact" },
   ];
 
   const scrollToSection = (sectionId: string) => {

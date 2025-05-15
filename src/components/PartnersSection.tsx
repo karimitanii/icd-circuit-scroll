@@ -1,26 +1,37 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Partner logos and websites
 const partners = [
-  { name: "TechCorp", logo: "techcorp.png", website: "https://techcorp.com" },
   {
-    name: "Kaic.ai",
-    logo: "lovable-uploads/Kaic.ai.png",
-    website: "https://kaic.ai",
+    name: "IDEAS s.a.r.l",
+    logo: "/lovable-uploads/IDEAS-Logo.png",
+    website: "https://i2-ideas.com/contents.aspx?pagetitle=home&Language=Eng",
+    description: "Innovative Digital Engineering and Advanced Solutions",
   },
   {
-    name: "Digital Solutions",
-    logo: "digitalsolutions.png",
-    website: "https://digitalsolutions.com",
+    name: "Kaic.ai",
+    logo: "/lovable-uploads/Kaic-Logo.png",
+    website: "https://kaic.ai",
+    description: "Advanced AI solutions for business transformation",
+  },
+  {
+    name: "Quality & Reliability",
+    logo: "/lovable-uploads/QNR-Logo.png",
+    website: "https://www.qnr.com.gr/",
+    description: "Leading provider of quality assurance and reliability services",
   },
 ];
 
 const PartnersSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [activePartner, setActivePartner] = useState<number | null>(null);
 
   useEffect(() => {
+    // Add class to make section visible when component mounts
+    if (sectionRef.current) {
+      sectionRef.current.classList.add("section-visible");
+    }
+
     // Intersection Observer for scroll animation
     const observerOptions = {
       threshold: 0.1,
@@ -31,43 +42,35 @@ const PartnersSection = () => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
           titleObserver.unobserve(entry.target);
-        } else {
-          entry.target.classList.remove("active");
         }
       });
     }, observerOptions);
 
-    if (titleRef.current) {
-      titleObserver.observe(titleRef.current);
+    const title = document.querySelector("#partners-title");
+    if (title) {
+      titleObserver.observe(title);
     }
 
-    // Setup observers for partner logos with appear/disappear effect
-    const logoObserver = new IntersectionObserver(
+    // Setup observers for partner cards
+    const cardObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            entry.target.classList.remove("inactive");
-          } else {
-            entry.target.classList.remove("active");
-            entry.target.classList.add("inactive");
+            entry.target.classList.add("fade-in");
           }
         });
       },
-      {
-        threshold: 0.5,
-        rootMargin: "-50px 0px",
-      }
+      { threshold: 0.2 }
     );
 
-    const logos = document.querySelectorAll(".partner-logo");
-    logos.forEach((logo) => {
-      logoObserver.observe(logo);
+    const cards = document.querySelectorAll(".partner-card");
+    cards.forEach((card) => {
+      cardObserver.observe(card);
     });
 
     return () => {
       titleObserver.disconnect();
-      logoObserver.disconnect();
+      cardObserver.disconnect();
     };
   }, []);
 
@@ -77,46 +80,61 @@ const PartnersSection = () => {
       ref={sectionRef}
       className="section bg-white relative overflow-hidden py-24"
     >
-      <div className="section-content z-10">
+      {/* Circuit background pattern */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0"></div>
+      
+      <div className="section-content z-10 max-w-6xl mx-auto px-4">
         <h2
-          ref={titleRef}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800 reveal"
+          id="partners-title"
+          className="reveal text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800"
         >
           Our <span className="text-icd-blue">Partners</span>
         </h2>
 
-        <div className="relative overflow-hidden">
-          <div
-            ref={carouselRef}
-            className="partners-carousel flex flex-wrap justify-center md:justify-start md:w-[200%] gap-8 py-8"
-          >
-            {partners.map((partner, index) => (
-              <a
-                key={index}
-                href={partner.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="partner-logo flex-shrink-0 w-36 h-36 md:w-48 md:h-48 bg-gray-100 rounded-xl flex items-center justify-center border border-gray-200 hover:border-icd-blue/50 transition-all duration-300 group opacity-0 transform translate-y-10"
-                style={{ transitionDelay: `${index * 100}ms` }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          {partners.map((partner, index) => (
+            <div
+              key={index}
+              className="reveal partner-card flex flex-col items-center"
+              style={{ transitionDelay: `${index * 150}ms` }}
+            >
+              <div
+                onMouseEnter={() => setActivePartner(index)}
+                onMouseLeave={() => setActivePartner(null)}
+                className="relative w-full aspect-square bg-white rounded-xl flex flex-col items-center justify-center p-6 border border-gray-200 hover:border-icd-blue transition-all duration-300 cursor-pointer hover:shadow-lg"
               >
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} Logo`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="mt-2 font-robotomono text-gray-400 group-hover:text-gray-700 transition-colors duration-300">
-                  {partner.name}
+                <div className="w-full h-32 flex items-center justify-center mb-4 overflow-hidden">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} Logo`}
+                    className="max-w-full max-h-full object-contain"
+                  />
                 </div>
-              </a>
-            ))}
-          </div>
-
-          {/* Fade effect on sides for horizontal scroll */}
-          <div className="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none hidden md:block"></div>
-          <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none hidden md:block"></div>
+                
+                <h3 className="text-xl font-orbitron text-gray-800 text-center mt-2">
+                  {partner.name}
+                </h3>
+                
+                <p className="text-gray-500 text-sm text-center mt-2">
+                  {partner.description}
+                </p>
+                
+                <div 
+                  className={`mt-4 transition-opacity duration-300 ${activePartner === index ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  <a
+                    href={partner.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-icd-blue text-white rounded-md text-sm hover:bg-blue-700 transition-colors"
+                  >
+                    Visit Website
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="text-center mt-8 text-gray-500 text-sm hidden md:block"></div>
       </div>
     </section>
   );

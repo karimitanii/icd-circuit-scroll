@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail } from "lucide-react"; // Import icons
 function ContactSection() {
   return (
     <section
-      id="career"
+      id="careers"
       className="section bg-white relative overflow-hidden py-24"
     >
       <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0"></div>

@@ -2,16 +2,17 @@ import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#001F3F] pt-16 pb-8 px-4 relative z-10">
+    <footer id="contact" className="bg-[#001F3F] pt-16 pb-8 px-4 relative z-10">
+      {/* Removed incorrect syntax and added proper id attribute above */}
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-blue-300/10">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img
+              {/*} <img
                 src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
                 alt="ICD Logo"
                 className="h-10 w-10"
-              />
+              /> */}
               <span className="text-2xl font-bold font-orbitron text-white">
                 <span className="text-icd-blue">ICD</span>
               </span>
