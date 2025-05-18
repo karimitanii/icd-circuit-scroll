@@ -10,21 +10,20 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
   const [fadeOut, setFadeOut] = useState(false);
   const pathwaysRef = useRef<SVGSVGElement>(null);
   
-  // Services data for endpoint circles
+  // Services data for endpoint circles - removed bottom paths to avoid overlapping with text
   const services = [
     { name: "AI", position: { x: 75, y: 30 }, delay: 0.5 },
     { name: "E-Governance", position: { x: 85, y: 50 }, delay: 1.0 },
-    { name: "Software Dev", position: { x: 70, y: 70 }, delay: 1.5 },
-    { name: "Cloud Solutions", position: { x: 30, y: 70 }, delay: 2.0 },
-    { name: "System Integration", position: { x: 15, y: 50 }, delay: 2.5 },
-    { name: "Cybersecurity", position: { x: 25, y: 30 }, delay: 3.0 },
+    { name: "Software Dev", position: { x: 25, y: 30 }, delay: 1.5 },
+    { name: "Cloud Solutions", position: { x: 15, y: 50 }, delay: 2.0 },
+    { name: "System Integration", position: { x: 30, y: 70 }, delay: 2.5 },
+    { name: "Cybersecurity", position: { x: 70, y: 70 }, delay: 3.0 },
   ];
 
   useEffect(() => {
-    // Animation sequence using timeouts
+    // Animation sequence using timeouts - words first, then paths
     const timer1 = setTimeout(() => {
       setStep(1); // Show Innovation
-      animatePathways();
     }, 1000);
 
     const timer2 = setTimeout(() => {
@@ -33,12 +32,17 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
 
     const timer3 = setTimeout(() => {
       setStep(3); // Show Development
+      
+      // Only start drawing paths after all words are shown
+      setTimeout(() => {
+        animatePathways();
+      }, 1000);
     }, 4000);
 
     const timer4 = setTimeout(() => {
       setFadeOut(true); // Start fade-out animation
       setTimeout(onComplete, 1000); // Complete animation after fade-out
-    }, 5500);
+    }, 7500); // Increased time to allow for complete animation sequence
 
     return () => {
       // Clear all timeouts on unmount
@@ -88,11 +92,12 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="splash-logo mb-8 animate-fade-in">
+      <div className="splash-logo mb-8 animate-fade-in relative">
         <img
           src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
           alt="ICD Logo"
-          className="w-32 h-32 md:w-40 md:h-40"
+          className="w-32 h-32 md:w-40 md:h-40 z-10 relative"
+          style={{ filter: "drop-shadow(0 0 8px rgba(0, 71, 171, 0.4))" }}
         />
       </div>
 
@@ -120,7 +125,8 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
                   stroke="#0047AB"
                   strokeWidth="0.5"
                   fill="none"
-                  style={{ opacity: 0.8 }}
+                  style={{ opacity: 0.8, visibility: step >= 3 ? "visible" : "hidden" }}
+                  filter="drop-shadow(0 0 3px rgba(0, 71, 171, 0.6))"
                 />
                 
                 {/* Endpoint circle */}
@@ -130,22 +136,28 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
                   cy={service.position.y} 
                   r="1.5" 
                   fill="#0047AB"
-                  style={{ opacity: 0, transition: 'opacity 0.3s ease-in-out' }}
+                  style={{ 
+                    opacity: 0, 
+                    transition: 'opacity 0.3s ease-in-out',
+                    filter: "drop-shadow(0 0 4px rgba(0, 71, 171, 0.8))"
+                  }}
                 />
                 
-                {/* Service box */}
+                {/* Service box - improved to handle longer text */}
                 <g 
                   className="service-box"
                   style={{ opacity: 0, transition: 'opacity 0.5s ease-in-out' }}
                 >
+                  {/* Dynamic width rectangle based on text length */}
                   <rect
-                    x={service.position.x - 5}
+                    x={service.position.x - (service.name.length * 0.9)}
                     y={service.position.y - 2}
-                    width="10"
+                    width={service.name.length * 1.8}
                     height="4"
                     rx="1"
                     fill="#0047AB"
                     fillOpacity="0.9"
+                    filter="drop-shadow(0 0 4px rgba(0, 71, 171, 0.6))"
                   />
                   <text
                     x={service.position.x}
@@ -154,6 +166,7 @@ const SplashIntro = ({ onComplete }: SplashIntroProps) => {
                     fill="white"
                     fontSize="1.8"
                     fontFamily="Orbitron, sans-serif"
+                    style={{ textShadow: "0 0 5px rgba(255, 255, 255, 0.7)" }}
                   >
                     {service.name}
                   </text>
