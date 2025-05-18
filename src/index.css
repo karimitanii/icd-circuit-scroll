@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -176,10 +177,53 @@
   }
 }
 
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    text-shadow: 0 0 0px rgba(0, 71, 171, 0);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(0, 71, 171, 0.6);
+  }
+}
+
+@keyframes pathwayDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 1s ease-out forwards;
 }
 
 .animate-slide-in {
   animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-text-reveal {
+  animation: textReveal 1s ease-out forwards;
+  opacity: 0;
+}
+
+.pathway {
+  filter: drop-shadow(0 0 3px rgba(0, 71, 171, 0.6));
+}
+
+.endpoint {
+  filter: drop-shadow(0 0 2px rgba(0, 71, 171, 0.8));
+}
+
+.service-box rect {
+  filter: drop-shadow(0 0 2px rgba(0, 71, 171, 0.6));
+}
+
+/* Glow effect for the logo */
+.splash-logo img {
+  filter: drop-shadow(0 0 8px rgba(0, 71, 171, 0.4));
 }
