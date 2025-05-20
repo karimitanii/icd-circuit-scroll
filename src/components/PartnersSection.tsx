@@ -89,7 +89,7 @@ const PartnersSection = () => {
           id="partners-title"
           className="reveal text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800"
         >
-          Our <span className="text-icd-blue">Business Partners</span>
+          <span className="text-icd-blue">Business Partners</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">

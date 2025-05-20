@@ -64,6 +64,7 @@ const Index = () => {
         <CeoSection />
         <PartnersSection />
         <ServicesSection />
+        <CareersSection />
       </main>
       <Footer />
     </div>
