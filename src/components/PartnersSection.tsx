@@ -18,7 +18,8 @@ const partners = [
     name: "Quality & Reliability",
     logo: "/lovable-uploads/QNR-Logo.png",
     website: "https://www.qnr.com.gr/",
-    description: "Leading provider of quality assurance and reliability services",
+    description:
+      "Leading provider of quality assurance and reliability services",
   },
 ];
 
@@ -82,13 +83,13 @@ const PartnersSection = () => {
     >
       {/* Circuit background pattern */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0"></div>
-      
+
       <div className="section-content z-10 max-w-6xl mx-auto px-4">
         <h2
           id="partners-title"
           className="reveal text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800"
         >
-          Our <span className="text-icd-blue">Partners</span>
+          Our <span className="text-icd-blue">Business Partners</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -110,17 +111,19 @@ const PartnersSection = () => {
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                
+
                 <h3 className="text-xl font-orbitron text-gray-800 text-center mt-2">
                   {partner.name}
                 </h3>
-                
+
                 <p className="text-gray-500 text-sm text-center mt-2">
                   {partner.description}
                 </p>
-                
-                <div 
-                  className={`mt-4 transition-opacity duration-300 ${activePartner === index ? 'opacity-100' : 'opacity-0'}`}
+
+                <div
+                  className={`mt-4 transition-opacity duration-300 ${
+                    activePartner === index ? "opacity-100" : "opacity-0"
+                  }`}
                 >
                   <a
                     href={partner.website}

@@ -5,11 +5,20 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
+
+      // Get hero section height to determine when to hide navbar
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        // Show navbar only when in hero section (with small buffer)
+        setIsVisible(scrollPosition < heroHeight - 100);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -43,8 +52,9 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-6",
         isScrolled
-          ? "bg-[#001F3F]/95 backdrop-blur-md shadow-md"
-          : "bg-[#001F3F]/80"
+          ? "bg-transparent backdrop-blur-sm shadow-md"
+          : "bg-transparent",
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       )}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -58,13 +68,8 @@ const Navbar = () => {
             scrollToSection("#hero");
           }}
         >
-          <img
-            src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
-            alt="ICD Logo"
-            className="h-10 w-10"
-          />
-          <span className="text-xl font-bold font-orbitron text-white">
-            <span className="text-icd-blue">ICD</span>
+          <span className="text-3xl font-bold font-orbitron text-white">
+            <span className="text-icd-white">ICD</span>
           </span>
         </a>
 
@@ -74,13 +79,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-white hover:text-icd-blue transition-colors text-sm font-medium font-robotomono ${
-                isHovering ? "" : "animate-float"
-              }`}
-              style={{
-                animationDelay: `${index * 0.2}s`,
-                animationPlayState: isHovering ? "paused" : "running",
-              }}
+              className="text-white hover:text-icd-blue transition-colors text-sm font-futuristic"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.href);

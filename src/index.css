@@ -130,7 +130,7 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  .text-gradient {
+  .text-light-blue {
     background: linear-gradient(90deg, #0047ab, #4169e1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -303,4 +303,13 @@
   mix-blend-mode: screen;
   animation: glitch 1.2s infinite linear alternate-reverse;
   opacity: 0.15;
+}
+
+@layer base {
+  .font-futuristic {
+    font-family: "Orbitron", "Rajdhani", sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 }
