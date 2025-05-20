@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +42,12 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-6",
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
+        isScrolled
+          ? "bg-[#001F3F]/95 backdrop-blur-md shadow-md"
+          : "bg-[#001F3F]/80"
       )}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a
@@ -58,18 +63,24 @@ const Navbar = () => {
             alt="ICD Logo"
             className="h-10 w-10"
           />
-          <span className="text-xl font-bold font-orbitron text-gray-800">
+          <span className="text-xl font-bold font-orbitron text-white">
             <span className="text-icd-blue">ICD</span>
           </span>
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-icd-blue hover:text-gray-800 transition-colors text-sm font-medium font-robotomono"
+              className={`text-white hover:text-icd-blue transition-colors text-sm font-medium font-robotomono ${
+                isHovering ? "" : "animate-float"
+              }`}
+              style={{
+                animationDelay: `${index * 0.2}s`,
+                animationPlayState: isHovering ? "paused" : "running",
+              }}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.href);
@@ -82,7 +93,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-gray-800 p-2"
+          className="md:hidden text-white p-2"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
@@ -113,13 +124,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md absolute top-full left-0 w-full py-4 shadow-lg">
+        <div className="md:hidden bg-[#001F3F]/95 backdrop-blur-md absolute top-full left-0 w-full py-4 shadow-lg">
           <div className="flex flex-col space-y-4 px-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-800 hover:text-icd-blue py-2 transition-colors text-sm font-medium"
+                className="text-white hover:text-icd-blue py-2 transition-colors text-sm font-medium"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection(link.href);

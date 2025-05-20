@@ -3,16 +3,10 @@ import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 const Footer = () => {
   return (
     <footer id="contact" className="bg-[#001F3F] pt-16 pb-8 px-4 relative z-10">
-      {/* Removed incorrect syntax and added proper id attribute above */}
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-blue-300/10">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              {/*} <img
-                src="/lovable-uploads/7f00208c-2b91-4a73-9151-d078f7307838.png"
-                alt="ICD Logo"
-                className="h-10 w-10"
-              /> */}
               <span className="text-2xl font-bold font-orbitron text-white">
                 <span className="text-icd-blue">ICD</span>
               </span>
@@ -25,13 +19,13 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-white/60 hover:text-icd-blue transition-colors"
+                className="text-white/60 hover:text-icd-blue transition-colors icon-spin"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="https://www.instagram.com/icdcentrebeirut/"
-                className="text-white/60 hover:text-icd-blue transition-colors"
+                className="text-white/60 hover:text-icd-blue transition-colors icon-spin"
               >
                 <Instagram size={20} />
               </a>
@@ -88,27 +82,36 @@ const Footer = () => {
             <h3 className="text-lg font-orbitron mb-4">Contact Us</h3>
             <ul className="space-y-2 text-white/70">
               <li className="flex items-center space-x-2">
-                <Mail size={16} />
+                <a href="mailto:info@icd-me.com" className="icon-spin inline-flex text-white/70 hover:text-icd-blue">
+                  <Mail size={16} />
+                </a>
                 <span>info@icd-me.com</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Mail size={16} />
+                <a href="mailto:icd-careers@gmail.com" className="icon-spin inline-flex text-white/70 hover:text-icd-blue">
+                  <Mail size={16} />
+                </a>
                 <span>icd-careers@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Phone size={16} />
+                <a href="tel:+96171777795" className="icon-spin inline-flex text-white/70 hover:text-icd-blue">
+                  <Phone size={16} />
+                </a>
                 <span>+961 71 777795</span>
               </li>
               <li className="flex items-center space-x-2">
-                <Phone size={16} />
-                <span>+961 71 896000</span>{" "}
+                <a href="tel:+96171896000" className="icon-spin inline-flex text-white/70 hover:text-icd-blue">
+                  <Phone size={16} />
+                </a>
+                <span>+961 71 896000</span>
               </li>
               <li className="flex items-center space-x-2">
-                <MapPin size={16} />
+                <a href="https://maps.app.goo.gl/eitSEvWK5ACmUkuS8" target="_blank" rel="noopener noreferrer" className="icon-spin inline-flex text-white/70 hover:text-icd-blue">
+                  <MapPin size={16} />
+                </a>
                 <span>
                   Beirut,Downtown,Allenby St,Py136 bldg,1st floor
-                </span>{" "}
-                {/* Replace with actual address */}
+                </span>
               </li>
             </ul>
           </div>

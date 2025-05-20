@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
-import SplashIntro from "@/components/SplashIntro";
+// Removed SplashIntro import
 import HeroSection from "@/components/HeroSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
 import CeoSection from "@/components/CeoSection";
-import BusinessPartnersSection from "@/components/BusinessPartnersSection";
+//import BusinessPartnersSection from "@/components/BusinessPartnersSection";
 import ServicesSection from "@/components/ServicesSection";
 import PartnersSection from "@/components/PartnersSection";
 import CareersSection from "@/components/CareersSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
-  const [introComplete, setIntroComplete] = useState(false);
+  // Removed introComplete state
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -43,11 +43,9 @@ const Index = () => {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, [introComplete]);
+  }, []); // Removed introComplete dependency
 
-  const handleIntroComplete = () => {
-    setIntroComplete(true);
-  };
+  // Removed handleIntroComplete function
 
   if (loading) {
     return (
@@ -59,23 +57,16 @@ const Index = () => {
 
   return (
     <div className="bg-gradient-to-b from-icd-dark to-black min-h-screen text-white overflow-hidden">
-      {!introComplete ? (
-        <SplashIntro onComplete={handleIntroComplete} />
-      ) : (
-        <>
-          <Navbar />
-          <main>
-            <HeroSection />
-            <WhoWeAreSection />
-            <CeoSection />
-            <BusinessPartnersSection />
-            <ServicesSection />
-            <PartnersSection />
-            <CareersSection />
-          </main>
-          <Footer />
-        </>
-      )}
+      <Navbar />
+      <main>
+        <HeroSection />
+        <WhoWeAreSection />
+        <CeoSection />
+        <PartnersSection />
+        <ServicesSection />
+        <CareersSection />
+      </main>
+      <Footer />
     </div>
   );
 };
