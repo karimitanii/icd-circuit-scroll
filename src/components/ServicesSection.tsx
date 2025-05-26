@@ -41,7 +41,7 @@ const services = [
     icon: "🤖",
     title: "Enterprise AI & Virtual Workforce Solutions",
     description:
-      "AI employee orchestration through platforms like Tenn.ai, enabling autonomous digital teams.",
+      "AI employee orchestration through platforms, enabling autonomous digital teams.",
   },
   {
     icon: "🏗️",
