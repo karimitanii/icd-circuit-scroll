@@ -81,8 +81,45 @@ const PartnersSection = () => {
       ref={sectionRef}
       className="section bg-white relative overflow-hidden py-24"
     >
-      {/* Circuit background pattern */}
-      <div className="absolute inset-0 bg-circuit-pattern opacity-5 z-0"></div>
+      {/* Background circuit animation - same as services section */}
+      <div className="absolute inset-0 z-0">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern
+              id="partners-pattern"
+              x="0"
+              y="0"
+              width="200"
+              height="200"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M10 10 L50 10 L50 50 L90 50 L90 90 L130 90 L130 130 L170 130 L170 170"
+                stroke="#0047AB"
+                strokeOpacity="0.05"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path
+                d="M190 10 L150 10 L150 50 L110 50 L110 90 L70 90 L70 130 L30 130 L30 170"
+                stroke="#0047AB"
+                strokeOpacity="0.05"
+                strokeWidth="2"
+                fill="none"
+              />
+              <circle cx="50" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="90" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="130" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="170" cy="130" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="150" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="110" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="70" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="30" cy="130" r="3" fill="#0047AB" fillOpacity="0.1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#partners-pattern)" />
+        </svg>
+      </div>
 
       <div className="section-content z-10 max-w-6xl mx-auto px-4">
         <h2

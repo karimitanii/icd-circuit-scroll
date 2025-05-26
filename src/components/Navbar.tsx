@@ -12,18 +12,24 @@ const Navbar = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
 
-      // Get hero section height to determine when to hide navbar
+      // Get hero section height to determine navbar visibility
       const heroSection = document.getElementById("hero");
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight;
-        // Show navbar only when in hero section (with small buffer)
-        setIsVisible(scrollPosition < heroHeight - 100);
+        // Always show navbar after hero section, only hide when scrolling up within hero
+        if (scrollPosition < heroHeight) {
+          // In hero section - show only when near top or when hovering
+          setIsVisible(scrollPosition < 100 || isHovering);
+        } else {
+          // Past hero section - always show
+          setIsVisible(true);
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHovering]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -52,40 +58,47 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-4 md:px-6",
         isScrolled
-          ? "bg-transparent backdrop-blur-sm shadow-md"
+          ? "bg-gradient-to-r from-blue-950/90 to-blue-800/80 backdrop-blur-sm shadow-[0_0_15px_rgba(0,30,80,0.4)] border-b border-blue-700/30"
           : "bg-transparent",
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       )}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between relative">
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 bg-blue-700/10 blur-xl rounded-full opacity-50 pointer-events-none"></div>
+        
         <a
           href="#hero"
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 relative"
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("#hero");
           }}
         >
           <span className="text-3xl font-bold font-orbitron text-white">
-            <span className="text-icd-white">ICD</span>
+            <span className="text-icd-white relative">
+              ICD
+              <span className="absolute -inset-1 bg-blue-400/20 blur-sm rounded-lg -z-10"></span>
+            </span>
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-6 relative">
           {navLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-white hover:text-icd-blue transition-colors text-sm font-futuristic"
+              className="text-white hover:text-blue-300 transition-all duration-300 text-sm font-futuristic relative group"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.href);
               }}
             >
               {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
         </nav>

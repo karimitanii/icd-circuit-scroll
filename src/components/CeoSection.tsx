@@ -40,52 +40,54 @@ function CeoSection() {
     <section
       id="ceo"
       ref={sectionRef}
-      className="section bg-gradient-to-b from-white to-gray-50 relative overflow-hidden py-24"
+      className="section bg-white relative overflow-hidden py-24"
     >
-      {/* Circuit pattern overlay */}
+      {/* Background circuit animation - same as services section */}
       <div className="absolute inset-0 z-0">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern
-              id="circuit-pattern"
+              id="ceo-services-pattern"
               x="0"
               y="0"
-              width="100"
-              height="100"
+              width="200"
+              height="200"
               patternUnits="userSpaceOnUse"
             >
-              {/* Keep the same paths but update colors */}
               <path
-                d="M10 10 L30 10 L30 30 L50 30 L50 50 L70 50 L70 70 L90 70"
+                d="M10 10 L50 10 L50 50 L90 50 L90 90 L130 90 L130 130 L170 130 L170 170"
                 stroke="#0047AB"
-                strokeOpacity="0.1"
-                strokeWidth="1"
+                strokeOpacity="0.05"
+                strokeWidth="2"
                 fill="none"
               />
               <path
-                d="M20 80 L40 80 L40 60 L60 60 L60 40 L80 40 L80 20"
+                d="M190 10 L150 10 L150 50 L110 50 L110 90 L70 90 L70 130 L30 130 L30 170"
                 stroke="#0047AB"
-                strokeOpacity="0.1"
-                strokeWidth="1"
+                strokeOpacity="0.05"
+                strokeWidth="2"
                 fill="none"
               />
-              <circle cx="30" cy="10" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="50" cy="30" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="70" cy="50" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="40" cy="80" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="60" cy="60" r="2" fill="#0047AB" fillOpacity="0.2" />
-              <circle cx="80" cy="40" r="2" fill="#0047AB" fillOpacity="0.2" />
+              <circle cx="50" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="90" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="130" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="170" cy="130" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="150" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="110" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="70" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="30" cy="130" r="3" fill="#0047AB" fillOpacity="0.1" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#circuit-pattern)" />
+          <rect width="100%" height="100%" fill="url(#ceo-services-pattern)" />
         </svg>
       </div>
 
       <div className="section-content z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-900">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800">
           Meet Our <span className="text-icd-blue">CEO</span>
         </h2>
 
+        {/* Rest of the CEO section content remains unchanged */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl mx-auto">
           <div ref={imageRef} className="relative mx-auto">
             {/* CEO image with digital overlay */}
