@@ -37,7 +37,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "#hero" },
-    { name: "About", href: "#who-we-are" },
+    { name: "About Us", href: "#who-we-are" },
     { name: "Leadership", href: "#ceo" },
     { name: "Services", href: "#services" },
     { name: "Partners", href: "#partners" },
@@ -68,7 +68,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between relative">
         {/* Subtle glow effect */}
         <div className="absolute inset-0 bg-blue-700/10 blur-xl rounded-full opacity-50 pointer-events-none"></div>
-        
+
         <a
           href="#hero"
           className="flex items-center space-x-2 relative"
