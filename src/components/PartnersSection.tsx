@@ -36,6 +36,7 @@ const PartnersSection = () => {
     // Intersection Observer for scroll animation
     const observerOptions = {
       threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const titleObserver = new IntersectionObserver((entries) => {
@@ -57,7 +58,24 @@ const PartnersSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("fade-in");
+            entry.target.classList.add("active");
+            
+            // Add initial animation for partner cards
+            if (entry.target.classList.contains("partner-card")) {
+              const card = entry.target;
+              
+              // Add class to trigger initial animation
+              setTimeout(() => {
+                card.classList.add("initial-animate");
+                
+                // Remove initial animation class after it completes
+                setTimeout(() => {
+                  card.classList.remove("initial-animate");
+                }, 1500);
+              }, 300);
+            }
+            
+            cardObserver.unobserve(entry.target);
           }
         });
       },
@@ -133,49 +151,109 @@ const PartnersSection = () => {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="reveal partner-card flex flex-col items-center"
-              style={{ transitionDelay: `${index * 150}ms` }}
+              className="partner-card group h-full reveal perspective-1000"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
+                className="relative bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
+                border border-blue-400 hover:border-blue-300 shadow-sm hover:shadow-xl text-white
+                group-hover:translate-y-[-10px] overflow-hidden initial-animate-container"
                 onMouseEnter={() => setActivePartner(index)}
                 onMouseLeave={() => setActivePartner(null)}
-                className="relative w-full aspect-square bg-white rounded-xl flex flex-col items-center justify-center p-6 border border-gray-200 hover:border-icd-blue transition-all duration-300 cursor-pointer hover:shadow-lg"
               >
-                <div className="w-full h-32 flex items-center justify-center mb-4 overflow-hidden">
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.name} Logo`}
-                    className="max-w-full max-h-full object-contain"
-                  />
+                {/* Futuristic background elements */}
+                <div
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-300 to-blue-100 
+                  transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                ></div>
+
+                <div
+                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 rounded-tl-3xl 
+                  opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                ></div>
+
+                <div
+                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-300/40 to-blue-100/40 
+                  rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 
+                  group-hover:scale-150"
+                ></div>
+
+                {/* Logo with special animation */}
+                <div className="w-full h-32 flex items-center justify-center mb-4 overflow-hidden relative z-10">
+                  <div className="bg-white/90 rounded-lg p-4 w-full h-full flex items-center justify-center">
+                    <img
+                      src={partner.logo}
+                      alt={`${partner.name} Logo`}
+                      className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-orbitron text-gray-800 text-center mt-2">
+                {/* Content */}
+                <h3
+                  className="relative z-10 text-xl font-orbitron mb-3 text-white 
+                  group-hover:text-blue-100 transition-colors duration-300 text-center"
+                >
                   {partner.name}
                 </h3>
 
-                <p className="text-gray-500 text-sm text-center mt-2">
+                <p className="relative z-10 text-blue-100 group-hover:text-white transition-colors duration-300 text-center mb-6">
                   {partner.description}
                 </p>
 
-                <div
-                  className={`mt-4 transition-opacity duration-300 ${
-                    activePartner === index ? "opacity-100" : "opacity-0"
-                  }`}
-                >
+                {/* Visit Website Button */}
+                <div className="relative z-10 flex justify-center mt-auto">
                   <a
                     href={partner.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-icd-blue text-white rounded-md text-sm hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-md text-sm 
+                    hover:bg-white/30 transition-colors border border-white/30 hover:border-white/50"
                   >
                     Visit Website
                   </a>
+                </div>
+
+                {/* Futuristic corner accent */}
+                <div
+                  className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] 
+                  border-t-transparent border-r-blue-600 opacity-0 
+                  group-hover:opacity-100 transition-opacity duration-500"
+                ></div>
+
+                {/* Animated dots */}
+                <div
+                  className="absolute bottom-3 left-3 flex space-x-1 opacity-0 
+                  group-hover:opacity-100 transition-all duration-500 delay-300"
+                >
+                  <div className="w-1 h-1 rounded-full bg-blue-300 animate-pulse"></div>
+                  <div
+                    className="w-1 h-1 rounded-full bg-blue-200 animate-pulse"
+                    style={{ animationDelay: "300ms" }}
+                  ></div>
+                  <div
+                    className="w-1 h-1 rounded-full bg-blue-100 animate-pulse"
+                    style={{ animationDelay: "600ms" }}
+                  ></div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Add CSS for animations */}
+      <style>{`
+        .initial-animate {
+          animation: cardPulse 1.5s ease-in-out;
+        }
+        
+        @keyframes cardPulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+      `}</style>
     </section>
   );
 };
