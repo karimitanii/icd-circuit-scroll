@@ -78,10 +78,10 @@ function HeroSection() {
       {/* Semi-transparent overlay to ensure text readability */}
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
-      <div className="section-content flex flex-col items-center justify-center z-10 pt-20">
+      <div className="section-content flex flex-col items-center justify-center z-6 pt-10">
         <h1
           ref={headlineRef}
-          className="text-3xl md:text-3xl lg:text-3xl font-bold font-orbitron text-center mb-6 leading-tight text-white font-futuristic"
+          className="text-2xl md:text-2xl lg:text-2xl font-bold font-orbitron text-center mb-6 leading-tight text-white font-futuristic"
         >
           Let's talk about the future <br />
           <span className="text-light-blue">
@@ -91,7 +91,7 @@ function HeroSection() {
 
         <p
           ref={paragraphRef}
-          className="text-lg md:text-xl text-white/90 text-center max-w-3xl mb-12 font-futuristic"
+          className="text-lg md:text-l text-white/90 text-center max-w-2xl mb-12 font-futuristic"
         >
           We blend technology with creative solutions.
           <br />

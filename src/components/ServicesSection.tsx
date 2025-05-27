@@ -23,7 +23,7 @@ const services = [
     icon: "☁️",
     title: "Integrated Cloud & On-Premise Solutions",
     description:
-      "Deployment and management of hybrid environments including Oracle, Microsoft Azure, and custom MCP infrastructures.",
+      "Deployment and management of hybrid environments including AWS, Oracle, Microsoft Azure, and custom MCP infrastructures.",
   },
   {
     icon: "💳",
@@ -112,31 +112,55 @@ const ServicesSection = () => {
               <path
                 d="M10 10 L50 10 L50 50 L90 50 L90 90 L130 90 L130 130 L170 130 L170 170"
                 stroke="#0047AB"
-                strokeOpacity="0.05"
-                strokeWidth="2"
+                strokeOpacity="0.01"
+                strokeWidth="1"
                 fill="none"
               />
               <path
                 d="M190 10 L150 10 L150 50 L110 50 L110 90 L70 90 L70 130 L30 130 L30 170"
                 stroke="#0047AB"
-                strokeOpacity="0.05"
-                strokeWidth="2"
+                strokeOpacity="0.01"
+                strokeWidth="1"
                 fill="none"
               />
-              <circle cx="50" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
-              <circle cx="90" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
-              <circle cx="130" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle cx="50" cy="10" r="3" fill="#0047AB" fillOpacity="0.05" />
+              <circle cx="90" cy="50" r="3" fill="#0047AB" fillOpacity="0.05" />
+              <circle
+                cx="130"
+                cy="90"
+                r="3"
+                fill="#0047AB"
+                fillOpacity="0.02"
+              />
               <circle
                 cx="170"
                 cy="130"
                 r="3"
                 fill="#0047AB"
-                fillOpacity="0.1"
+                fillOpacity="0.02"
               />
-              <circle cx="150" cy="10" r="3" fill="#0047AB" fillOpacity="0.1" />
-              <circle cx="110" cy="50" r="3" fill="#0047AB" fillOpacity="0.1" />
-              <circle cx="70" cy="90" r="3" fill="#0047AB" fillOpacity="0.1" />
-              <circle cx="30" cy="130" r="3" fill="#0047AB" fillOpacity="0.1" />
+              <circle
+                cx="150"
+                cy="10"
+                r="3"
+                fill="#0047AB"
+                fillOpacity="0.02"
+              />
+              <circle
+                cx="110"
+                cy="50"
+                r="3"
+                fill="#0047AB"
+                fillOpacity="0.02"
+              />
+              <circle cx="70" cy="90" r="3" fill="#0047AB" fillOpacity="0.05" />
+              <circle
+                cx="30"
+                cy="130"
+                r="3"
+                fill="#0047AB"
+                fillOpacity="0.02"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#services-pattern)" />
