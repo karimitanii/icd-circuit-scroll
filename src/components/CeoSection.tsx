@@ -2,6 +2,30 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Add custom styles for the animations
+const styles = `
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+  }
+  
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 6s linear infinite;
+  }
+`;
+
+// Add the styles to the document
+if (typeof document !== "undefined") {
+  const styleElement = document.createElement("style");
+  styleElement.innerHTML = styles;
+  document.head.appendChild(styleElement);
+}
+
 function CeoSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -42,46 +66,6 @@ function CeoSection() {
       ref={sectionRef}
       className="section bg-white relative overflow-hidden py-24"
     >
-      {/* Background circuit animation - updated to match services section */}
-      <div className="absolute inset-0 z-0">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="ceo-services-pattern"
-              x="0"
-              y="0"
-              width="200"
-              height="200"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M10 10 L50 10 L50 50 L90 50 L90 90 L130 90 L130 130 L170 130 L170 170"
-                stroke="#0047AB"
-                strokeOpacity="0.01"
-                strokeWidth="1"
-                fill="none"
-              />
-              <path
-                d="M190 10 L150 10 L150 50 L110 50 L110 90 L70 90 L70 130 L30 130 L30 170"
-                stroke="#0047AB"
-                strokeOpacity="0.01"
-                strokeWidth="1"
-                fill="none"
-              />
-              <circle cx="50" cy="10" r="3" fill="#0047AB" fillOpacity="0.05" />
-              <circle cx="90" cy="50" r="3" fill="#0047AB" fillOpacity="0.05" />
-              <circle cx="130" cy="90" r="3" fill="#0047AB" fillOpacity="0.02" />
-              <circle cx="170" cy="130" r="3" fill="#0047AB" fillOpacity="0.02" />
-              <circle cx="150" cy="10" r="3" fill="#0047AB" fillOpacity="0.02" />
-              <circle cx="110" cy="50" r="3" fill="#0047AB" fillOpacity="0.02" />
-              <circle cx="70" cy="90" r="3" fill="#0047AB" fillOpacity="0.05" />
-              <circle cx="30" cy="130" r="3" fill="#0047AB" fillOpacity="0.02" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#ceo-services-pattern)" />
-        </svg>
-      </div>
-
       <div className="section-content z-10">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-gray-800">
           Meet Our <span className="text-icd-blue">CEO</span>
@@ -91,7 +75,7 @@ function CeoSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl mx-auto">
           <div ref={imageRef} className="relative mx-auto">
             {/* CEO image with digital overlay */}
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-white relative border-2 border-icd-blue/30">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-white relative border-8 border-icd-blue/40 shadow-lg">
               <img
                 src="/lovable-uploads/Dr-Abbas.jpg"
                 alt="CEO Dr. Abbas"
@@ -109,10 +93,21 @@ function CeoSection() {
                       top: `${Math.random() * 100}%`,
                       left: 0,
                       right: 0,
-                      animation: `pulse-slow ${Math.random() * 3 + 3}s infinite`,
+                      animation: `pulse-slow ${
+                        Math.random() * 3 + 3
+                      }s infinite`,
                     }}
                   ></div>
                 ))}
+              </div>
+
+              {/* Glowing blue circular animation */}
+              <div className="absolute inset-0 z-30 pointer-events-none">
+                <div className="w-full h-full rounded-full border-4 border-transparent relative">
+                  <div className="absolute inset-[-4px] rounded-full border-4 border-transparent animate-spin-slow">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 blur-sm"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

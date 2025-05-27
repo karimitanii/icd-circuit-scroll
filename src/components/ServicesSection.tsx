@@ -2,55 +2,55 @@ import { useEffect, useRef } from "react";
 
 const services = [
   {
-    icon: "💼",
+    icon: "/lovable-uploads/services/business-consulting.png",
     title: "Digital & Business Consulting",
     description:
       "Strategic advisory across digital transformation, AI integration, smart infrastructure, and process reengineering.",
   },
   {
-    icon: "⚙️",
+    icon: "/lovable-uploads/services/automation.png",
     title: "Smart IT & Automation Systems",
     description:
       "Design and deployment of intelligent automation, IoT frameworks, and AI-driven control systems.",
   },
   {
-    icon: "💻",
+    icon: "/lovable-uploads/services/software-dev.png",
     title: "Custom Software & Platform Development",
     description:
       "Scalable, secure, and modular applications tailored to enterprise and public-sector needs.",
   },
   {
-    icon: "☁️",
+    icon: "/lovable-uploads/services/cloud.png",
     title: "Integrated Cloud & On-Premise Solutions",
     description:
       "Deployment and management of hybrid environments including AWS, Oracle, Microsoft Azure, and custom MCP infrastructures.",
   },
   {
-    icon: "💳",
+    icon: "/lovable-uploads/services/fintech.png",
     title: "Fintech & Digital Payment Systems",
     description:
       "Implementation of secure financial technologies including digital wallets, core banking integrations, and e-payment gateways.",
   },
   {
-    icon: "🏛️",
+    icon: "/lovable-uploads/services/public-sector.png",
     title: "E-Governance & Public Sector Platforms",
     description:
       "Full-scale municipal and national-level software systems for smart cities, citizen services, and digital governance.",
   },
   {
-    icon: "🤖",
+    icon: "/lovable-uploads/services/ai.png",
     title: "Enterprise AI & Virtual Workforce Solutions",
     description:
       "AI employee orchestration through platforms, enabling autonomous digital teams.",
   },
   {
-    icon: "🏗️",
+    icon: "/lovable-uploads/services/large-scale.png",
     title: "Large-Scale, Multi-Stakeholder Project Execution",
     description:
       "Proven expertise in managing complex deployments across ministries, municipalities, and international organizations.",
   },
   {
-    icon: "🎓",
+    icon: "/lovable-uploads/services/training.png",
     title: "Higher Education Training & Development",
     description:
       "Comprehensive training programs designed to enhance technical skills, digital literacy, and leadership capabilities for professionals and organizations.",
@@ -72,6 +72,27 @@ const ServicesSection = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
+
+          // Add initial animation for service cards
+          if (entry.target.classList.contains("service-card")) {
+            const card = entry.target;
+            const iconElement = card.querySelector(".service-icon");
+
+            // Add class to trigger initial animation
+            setTimeout(() => {
+              card.classList.add("initial-animate");
+              if (iconElement) {
+                iconElement.classList.add("initial-rotate");
+
+                // Remove initial animation class after it completes
+                setTimeout(() => {
+                  card.classList.remove("initial-animate");
+                  iconElement.classList.remove("initial-rotate");
+                }, 1500);
+              }
+            }, 300);
+          }
+
           observer.unobserve(entry.target);
         }
       });
@@ -183,52 +204,57 @@ const ServicesSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="relative bg-white rounded-xl p-6 h-full transform-gpu transition-all duration-500 
-                border border-gray-100 hover:border-blue-300 shadow-sm hover:shadow-xl
-                group-hover:translate-y-[-10px] overflow-hidden"
+                className="relative bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
+                border border-blue-400 hover:border-blue-300 shadow-sm hover:shadow-xl text-white
+                group-hover:translate-y-[-10px] overflow-hidden initial-animate-container"
               >
                 {/* Futuristic background elements */}
                 <div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600 
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-300 to-blue-100 
                   transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 ></div>
 
                 <div
-                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-50 rounded-tl-3xl 
-                  opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 rounded-tl-3xl 
+                  opacity-0 group-hover:opacity-30 transition-opacity duration-500"
                 ></div>
 
                 <div
-                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-blue-600/20 
+                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-300/40 to-blue-100/40 
                   rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 
                   group-hover:scale-150"
                 ></div>
 
-                {/* Icon with special animation */}
+                {/* Image with special animation - replacing icon */}
                 <div
-                  className="relative z-10 text-4xl mb-6 bg-blue-50 w-16 h-16 rounded-lg flex items-center 
-                  justify-center group-hover:bg-blue-100 group-hover:text-blue-600 
-                  transform-gpu transition-all duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+                  className="service-icon relative z-10 mb-6 bg-blue-600 w-600 h-600 rounded-lg flex items-center 
+                  justify-center group-hover:bg-blue-500 text-white overflow-hidden
+                  transform-gpu transition-all duration-700 group-hover:scale-110"
                 >
-                  {service.icon}
+                  <img
+                    src={service.icon}
+                    alt={service.title}
+                    className="w-500 h-500 object-contain service-image opacity-0 animate-fade-in transition-transform duration-700
+                    group-hover:scale-125"
+                  />
                 </div>
 
                 {/* Content */}
                 <h3
-                  className="relative z-10 text-xl font-orbitron mb-3 text-gray-800 
-                  group-hover:text-blue-600 transition-colors duration-300"
+                  className="relative z-10 text-xl font-orbitron mb-3 text-white 
+                  group-hover:text-blue-100 transition-colors duration-300"
                 >
                   {service.title}
                 </h3>
 
-                <p className="relative z-10 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="relative z-10 text-blue-100 group-hover:text-white transition-colors duration-300">
                   {service.description}
                 </p>
 
                 {/* Futuristic corner accent */}
                 <div
                   className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] 
-                  border-t-transparent border-r-blue-50 opacity-0 
+                  border-t-transparent border-r-blue-600 opacity-0 
                   group-hover:opacity-100 transition-opacity duration-500"
                 ></div>
 
@@ -237,13 +263,13 @@ const ServicesSection = () => {
                   className="absolute bottom-3 left-3 flex space-x-1 opacity-0 
                   group-hover:opacity-100 transition-all duration-500 delay-300"
                 >
-                  <div className="w-1 h-1 rounded-full bg-blue-400 animate-pulse"></div>
+                  <div className="w-1 h-1 rounded-full bg-blue-300 animate-pulse"></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-500 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-200 animate-pulse"
                     style={{ animationDelay: "300ms" }}
                   ></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-600 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-100 animate-pulse"
                     style={{ animationDelay: "600ms" }}
                   ></div>
                 </div>
@@ -252,6 +278,38 @@ const ServicesSection = () => {
           ))}
         </div>
       </div>
+
+      {/* Add CSS for animations */}
+      <style>{`
+        .initial-animate {
+          animation: cardPulse 1.5s ease-in-out;
+        }
+        
+        .initial-rotate {
+          animation: iconRotate 1.5s ease-in-out;
+        }
+        
+        @keyframes cardPulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+        }
+        
+        @keyframes iconRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .service-image {
+          animation: fadeIn 1s ease-in-out forwards;
+          animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 };
