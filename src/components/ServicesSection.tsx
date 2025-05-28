@@ -1,59 +1,69 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-const services = [
+export const services = [
   {
     icon: "/lovable-uploads/services/business-consulting.png",
     title: "Digital & Business Consulting",
     description:
       "Strategic advisory across digital transformation, AI integration, smart infrastructure, and process reengineering.",
+    slug: "digital-business-consulting",
   },
   {
     icon: "/lovable-uploads/services/automation.png",
     title: "Smart IT & Automation Systems",
     description:
       "Design and deployment of intelligent automation, IoT frameworks, and AI-driven control systems.",
+    slug: "smart-it-automation",
   },
   {
     icon: "/lovable-uploads/services/software-dev.png",
     title: "Custom Software & Platform Development",
     description:
       "Scalable, secure, and modular applications tailored to enterprise and public-sector needs.",
+    slug: "custom-software-development",
   },
   {
     icon: "/lovable-uploads/services/cloud.png",
     title: "Integrated Cloud & On-Premise Solutions",
     description:
       "Deployment and management of hybrid environments including AWS, Oracle, Microsoft Azure, and custom MCP infrastructures.",
+    slug: "cloud-solutions",
   },
   {
     icon: "/lovable-uploads/services/fintech.png",
     title: "Fintech & Digital Payment Systems",
     description:
       "Implementation of secure financial technologies including digital wallets, core banking integrations, and e-payment gateways.",
+    slug: "fintech-payment-systems",
   },
   {
     icon: "/lovable-uploads/services/public-sector.png",
     title: "E-Governance & Public Sector Platforms",
     description:
       "Full-scale municipal and national-level software systems for smart cities, citizen services, and digital governance.",
+    slug: "e-governance-platforms",
   },
   {
     icon: "/lovable-uploads/services/ai.png",
     title: "Enterprise AI & Virtual Workforce Solutions",
     description:
       "AI employee orchestration through platforms, enabling autonomous digital teams.",
+    slug: "enterprise-ai-solutions",
   },
   {
     icon: "/lovable-uploads/services/large-scale.png",
     title: "Large-Scale, Multi-Stakeholder Project Execution",
     description:
       "Proven expertise in managing complex deployments across ministries, municipalities, and international organizations.",
+    slug: "large-scale-projects",
   },
   {
     icon: "/lovable-uploads/services/training.png",
     title: "Higher Education Training & Development",
     description:
       "Comprehensive training programs designed to enhance technical skills, digital literacy, and leadership capabilities for professionals and organizations.",
+    slug: "education-training",
   },
 ];
 
@@ -227,14 +237,14 @@ const ServicesSection = () => {
 
                 {/* Image with special animation - replacing icon */}
                 <div
-                  className="service-icon relative z-10 mb-6 bg-blue-600 w-600 h-600 rounded-lg flex items-center 
+                  className="service-icon relative z-10 mb-6 bg-blue-600 w-24 h-24 rounded-lg flex items-center 
                   justify-center group-hover:bg-blue-500 text-white overflow-hidden
                   transform-gpu transition-all duration-700 group-hover:scale-110"
                 >
                   <img
                     src={service.icon}
                     alt={service.title}
-                    className="w-500 h-500 object-contain service-image opacity-0 animate-fade-in transition-transform duration-700
+                    className="w-20 h-20 object-contain service-image opacity-0 animate-fade-in transition-transform duration-700
                     group-hover:scale-125"
                   />
                 </div>
@@ -247,9 +257,33 @@ const ServicesSection = () => {
                   {service.title}
                 </h3>
 
-                <p className="relative z-10 text-blue-100 group-hover:text-white transition-colors duration-300">
+                <p className="relative z-10 text-blue-100 group-hover:text-white transition-colors duration-300 mb-10">
                   {service.description}
                 </p>
+
+                {/* Learn More Arrow Box */}
+                <Link to={`/services/${service.slug}`}>
+                  <div
+                    className="absolute bottom-3 right-3 z-20 w-10 h-10 bg-blue-800/80 hover:bg-blue-700 
+                    rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300
+                    border border-blue-400/30 hover:border-blue-300/50 transform hover:scale-110 group-hover:shadow-glow"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 text-white transition-transform duration-300 transform group-hover:translate-x-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </div>
+                </Link>
 
                 {/* Futuristic corner accent */}
                 <div
@@ -308,6 +342,10 @@ const ServicesSection = () => {
         @keyframes fadeIn {
           0% { opacity: 0; }
           100% { opacity: 1; }
+        }
+        
+        .shadow-glow {
+          box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.5);
         }
       `}</style>
     </section>
