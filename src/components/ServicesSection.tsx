@@ -237,14 +237,14 @@ const ServicesSection = () => {
 
                 {/* Image with special animation - replacing icon */}
                 <div
-                  className="service-icon relative z-10 mb-6 bg-blue-600 w-24 h-24 rounded-lg flex items-center 
+                  className="service-icon relative z-10 mb-6 bg-blue-600 w-600 h-600 rounded-lg flex items-center 
                   justify-center group-hover:bg-blue-500 text-white overflow-hidden
                   transform-gpu transition-all duration-700 group-hover:scale-110"
                 >
                   <img
                     src={service.icon}
                     alt={service.title}
-                    className="w-20 h-20 object-contain service-image opacity-0 animate-fade-in transition-transform duration-700
+                    className="w-500 h-500 object-contain service-image opacity-0 animate-fade-in transition-transform duration-700
                     group-hover:scale-125"
                   />
                 </div>
