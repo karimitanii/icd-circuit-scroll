@@ -4,18 +4,32 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Add custom styles for the animations
 const styles = `
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
-  }
-  
-  @keyframes spin-slow {
+  @keyframes spin-clockwise {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
   
-  .animate-spin-slow {
-    animation: spin-slow 6s linear infinite;
+  @keyframes spin-counterclockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  
+  @keyframes glow-pulse {
+    0% { opacity: 4; filter: blur(3px); }
+    50% { opacity: 4; filter: blur(3px); }
+    100% { opacity: 4; filter: blur(3px); }
+  }
+  
+  .animate-spin-clockwise {
+    animation: spin-clockwise 12s linear infinite;
+  }
+  
+  .animate-spin-counterclockwise {
+    animation: spin-counterclockwise 12s linear infinite;
+  }
+  
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 `;
 
@@ -101,11 +115,53 @@ function CeoSection() {
                 ))}
               </div>
 
-              {/* Glowing blue circular animation */}
-              <div className="absolute inset-0 z-30 pointer-events-none">
-                <div className="w-full h-full rounded-full border-4 border-transparent relative">
-                  <div className="absolute inset-[-4px] rounded-full border-4 border-transparent animate-spin-slow">
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 blur-sm"></div>
+              {/* Improved futuristic glowing circular animations */}
+              <div className="absolute inset-[-8px] z-30 pointer-events-none">
+                {/* Clockwise animation track */}
+                <div className="absolute inset-0 rounded-full">
+                  <div className="w-full h-full rounded-full animate-spin-clockwise">
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="49"
+                        fill="none"
+                        stroke="rgba(59, 130, 246, 0.4)"
+                        strokeWidth="0.5"
+                        strokeDasharray="0.5 8"
+                      />
+                      <circle
+                        cx="50"
+                        cy="2"
+                        r="3"
+                        fill="#3b82f6"
+                        className="animate-glow"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Counter-clockwise animation track */}
+                <div className="absolute inset-0 rounded-full">
+                  <div className="w-full h-full rounded-full animate-spin-counterclockwise">
+                    <svg className="w-full h-full" viewBox="0 0 100 100">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="49"
+                        fill="none"
+                        stroke="rgba(34, 211, 238, 0.4)"
+                        strokeWidth="0.5"
+                        strokeDasharray="0.5 8"
+                      />
+                      <circle
+                        cx="50"
+                        cy="98"
+                        r="3"
+                        fill="#22d3ee"
+                        className="animate-glow"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
