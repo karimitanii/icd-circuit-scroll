@@ -86,20 +86,15 @@ const ServicesSection = () => {
           // Add initial animation for service cards
           if (entry.target.classList.contains("service-card")) {
             const card = entry.target;
-            const iconElement = card.querySelector(".service-icon");
-
+            
             // Add class to trigger initial animation
             setTimeout(() => {
               card.classList.add("initial-animate");
-              if (iconElement) {
-                iconElement.classList.add("initial-rotate");
-
-                // Remove initial animation class after it completes
-                setTimeout(() => {
-                  card.classList.remove("initial-animate");
-                  iconElement.classList.remove("initial-rotate");
-                }, 1500);
-              }
+              
+              // Remove initial animation class after it completes
+              setTimeout(() => {
+                card.classList.remove("initial-animate");
+              }, 1500);
             }, 300);
           }
 
@@ -319,19 +314,10 @@ const ServicesSection = () => {
           animation: cardPulse 1.5s ease-in-out;
         }
         
-        .initial-rotate {
-          animation: iconRotate 1.5s ease-in-out;
-        }
-        
         @keyframes cardPulse {
           0% { transform: scale(1); }
           50% { transform: scale(1.05); }
           100% { transform: scale(1); }
-        }
-        
-        @keyframes iconRotate {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
         }
         
         .service-image {

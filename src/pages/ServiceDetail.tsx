@@ -76,11 +76,11 @@ const ServiceDetail = () => {
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-950 to-transparent"></div>
 
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="bg-blue-800 p-6 rounded-xl w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+              <div className="bg-blue-800 p-6 rounded-xl w-100 h-100 md:w-32 md:h-32 flex items-center justify-center">
                 <img
                   src={service.icon}
                   alt={service.title}
-                  className="w-16 h-16 md:w-24 md:h-24 object-contain"
+                  className="w-80 h-80 md:w-24 md:h-24 object-contain"
                 />
               </div>
               <div>
