@@ -141,8 +141,8 @@ const WhoWeAreSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="relative bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
-                border border-blue-400 hover:border-blue-300 shadow-sm hover:shadow-xl text-white
+                className="relative bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
+                border border-blue-600 hover:border-blue-400 shadow-sm hover:shadow-xl text-white
                 group-hover:translate-y-[-10px] overflow-hidden initial-animate-container"
               >
                 {/* Futuristic background elements */}

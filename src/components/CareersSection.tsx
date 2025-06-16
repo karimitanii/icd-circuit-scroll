@@ -18,18 +18,18 @@ function CareersSection() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          
+
           // Add initial animation for career card
           if (entry.target.classList.contains("career-card")) {
             const card = entry.target;
             const iconElement = card.querySelector(".mail-icon");
-            
+
             // Add class to trigger initial animation
             setTimeout(() => {
               card.classList.add("initial-animate");
               if (iconElement) {
                 iconElement.classList.add("initial-rotate");
-                
+
                 // Remove initial animation class after it completes
                 setTimeout(() => {
                   card.classList.remove("initial-animate");
@@ -38,7 +38,7 @@ function CareersSection() {
               }
             }, 300);
           }
-          
+
           observer.unobserve(entry.target);
         }
       });
@@ -74,7 +74,7 @@ function CareersSection() {
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
       <div className="section-content z-10 relative">
-        <h2 
+        <h2
           id="careers-title"
           className="text-3xl md:text-4xl lg:text-5xl font-bold font-orbitron text-center mb-16 text-white reveal"
         >
@@ -82,7 +82,7 @@ function CareersSection() {
         </h2>
 
         <div className="max-w-3xl mx-auto px-4">
-          <div 
+          <div
             ref={cardRef}
             className="career-card group reveal perspective-1000"
           >
@@ -110,7 +110,7 @@ function CareersSection() {
 
               {/* Content */}
               <h3 className="text-2xl md:text-2xl font-orbitron mb-6 text-white group-hover:text-blue-100 transition-colors duration-300 relative z-10">
-                Looking to join our team of innovators?
+                Looking To Join Our Team Of Innovators ?
               </h3>
 
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 p-6 bg-blue-600/30 backdrop-blur-sm rounded-lg relative z-10">

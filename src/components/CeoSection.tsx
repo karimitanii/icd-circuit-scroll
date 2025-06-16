@@ -89,7 +89,7 @@ function CeoSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl mx-auto">
           <div ref={imageRef} className="relative mx-auto">
             {/* CEO image with digital overlay */}
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-white relative border-8 border-icd-blue/40 shadow-lg">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-gradient-to-br from-gray-100 to-white relative border-8 border-icd-blue shadow-lg">
               <img
                 src="/lovable-uploads/Dr-Abbas.jpg"
                 alt="CEO Dr. Abbas"
@@ -114,57 +114,8 @@ function CeoSection() {
                   ></div>
                 ))}
               </div>
-
-              {/* Improved futuristic glowing circular animations */}
-              <div className="absolute inset-[-8px] z-30 pointer-events-none">
-                {/* Clockwise animation track */}
-                <div className="absolute inset-0 rounded-full">
-                  <div className="w-full h-full rounded-full animate-spin-clockwise">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="49"
-                        fill="none"
-                        stroke="rgba(59, 130, 246, 0.4)"
-                        strokeWidth="0.5"
-                        strokeDasharray="0.5 8"
-                      />
-                      <circle
-                        cx="50"
-                        cy="2"
-                        r="3"
-                        fill="#3b82f6"
-                        className="animate-glow"
-                      />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Counter-clockwise animation track */}
-                <div className="absolute inset-0 rounded-full">
-                  <div className="w-full h-full rounded-full animate-spin-counterclockwise">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="49"
-                        fill="none"
-                        stroke="rgba(34, 211, 238, 0.4)"
-                        strokeWidth="0.5"
-                        strokeDasharray="0.5 8"
-                      />
-                      <circle
-                        cx="50"
-                        cy="98"
-                        r="3"
-                        fill="#22d3ee"
-                        className="animate-glow"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+              
+              {/* Removed the circular glowing animations */}
             </div>
           </div>
 

@@ -209,31 +209,31 @@ const ServicesSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="relative bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
-                border border-blue-400 hover:border-blue-300 shadow-sm hover:shadow-xl text-white
+                className="relative bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
+                border border-blue-600 hover:border-blue-500 shadow-sm hover:shadow-xl text-white
                 group-hover:translate-y-[-10px] overflow-hidden initial-animate-container"
               >
                 {/* Futuristic background elements */}
                 <div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-300 to-blue-100 
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-300 
                   transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 ></div>
 
                 <div
-                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 rounded-tl-3xl 
+                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-800 rounded-tl-3xl 
                   opacity-0 group-hover:opacity-30 transition-opacity duration-500"
                 ></div>
 
                 <div
-                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-300/40 to-blue-100/40 
+                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-500/40 to-blue-300/40 
                   rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 
                   group-hover:scale-150"
                 ></div>
 
                 {/* Image with special animation - replacing icon */}
                 <div
-                  className="service-icon relative z-10 mb-6 bg-blue-600 w-600 h-600 rounded-lg flex items-center 
-                  justify-center group-hover:bg-blue-500 text-white overflow-hidden
+                  className="service-icon relative z-10 mb-6 bg-blue-800 w-600 h-600 rounded-lg flex items-center 
+                  justify-center group-hover:bg-blue-700 text-white overflow-hidden
                   transform-gpu transition-all duration-700 group-hover:scale-110"
                 >
                   <img
@@ -259,9 +259,9 @@ const ServicesSection = () => {
                 {/* Learn More Arrow Box */}
                 <Link to={`/services/${service.slug}`}>
                   <div
-                    className="absolute bottom-3 right-3 z-20 w-10 h-10 bg-blue-800/80 hover:bg-blue-700 
+                    className="absolute bottom-3 right-3 z-20 w-10 h-10 bg-blue-900/80 hover:bg-blue-800 
                     rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300
-                    border border-blue-400/30 hover:border-blue-300/50 transform hover:scale-110 group-hover:shadow-glow"
+                    border border-blue-600/30 hover:border-blue-500/50 transform hover:scale-110 group-hover:shadow-glow"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +283,7 @@ const ServicesSection = () => {
                 {/* Futuristic corner accent */}
                 <div
                   className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] 
-                  border-t-transparent border-r-blue-600 opacity-0 
+                  border-t-transparent border-r-blue-800 opacity-0 
                   group-hover:opacity-100 transition-opacity duration-500"
                 ></div>
 
@@ -292,13 +292,13 @@ const ServicesSection = () => {
                   className="absolute bottom-3 left-3 flex space-x-1 opacity-0 
                   group-hover:opacity-100 transition-all duration-500 delay-300"
                 >
-                  <div className="w-1 h-1 rounded-full bg-blue-300 animate-pulse"></div>
+                  <div className="w-1 h-1 rounded-full bg-blue-500 animate-pulse"></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-200 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-400 animate-pulse"
                     style={{ animationDelay: "300ms" }}
                   ></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-100 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-300 animate-pulse"
                     style={{ animationDelay: "600ms" }}
                   ></div>
                 </div>
@@ -331,7 +331,7 @@ const ServicesSection = () => {
         }
         
         .shadow-glow {
-          box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.5);
+          box-shadow: 0 0 8px 2px rgba(30, 64, 175, 0.5);
         }
       `}</style>
     </section>

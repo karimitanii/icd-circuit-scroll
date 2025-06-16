@@ -155,25 +155,25 @@ const PartnersSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
-                className="relative bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
-                border border-blue-400 hover:border-blue-300 shadow-sm hover:shadow-xl text-white
+                className="relative bg-gradient-to-br from-blue-900 to-blue-800 rounded-xl p-6 h-full transform-gpu transition-all duration-500 
+                border border-blue-700 hover:border-blue-600 shadow-sm hover:shadow-xl text-white
                 group-hover:translate-y-[-10px] overflow-hidden initial-animate-container"
                 onMouseEnter={() => setActivePartner(index)}
                 onMouseLeave={() => setActivePartner(null)}
               >
                 {/* Futuristic background elements */}
                 <div
-                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-300 to-blue-100 
+                  className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-700 to-blue-500 
                   transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 ></div>
 
                 <div
-                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600 rounded-tl-3xl 
+                  className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-800 rounded-tl-3xl 
                   opacity-0 group-hover:opacity-30 transition-opacity duration-500"
                 ></div>
 
                 <div
-                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-300/40 to-blue-100/40 
+                  className="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-br from-blue-700/40 to-blue-500/40 
                   rounded-full blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 
                   group-hover:scale-150"
                 ></div>
@@ -217,7 +217,7 @@ const PartnersSection = () => {
                 {/* Futuristic corner accent */}
                 <div
                   className="absolute top-0 right-0 w-0 h-0 border-t-[40px] border-r-[40px] 
-                  border-t-transparent border-r-blue-600 opacity-0 
+                  border-t-transparent border-r-blue-800 opacity-0 
                   group-hover:opacity-100 transition-opacity duration-500"
                 ></div>
 
@@ -226,13 +226,13 @@ const PartnersSection = () => {
                   className="absolute bottom-3 left-3 flex space-x-1 opacity-0 
                   group-hover:opacity-100 transition-all duration-500 delay-300"
                 >
-                  <div className="w-1 h-1 rounded-full bg-blue-300 animate-pulse"></div>
+                  <div className="w-1 h-1 rounded-full bg-blue-700 animate-pulse"></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-200 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-600 animate-pulse"
                     style={{ animationDelay: "300ms" }}
                   ></div>
                   <div
-                    className="w-1 h-1 rounded-full bg-blue-100 animate-pulse"
+                    className="w-1 h-1 rounded-full bg-blue-500 animate-pulse"
                     style={{ animationDelay: "600ms" }}
                   ></div>
                 </div>
