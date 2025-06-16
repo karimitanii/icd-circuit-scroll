@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
-// Removed SplashIntro import
 import HeroSection from "@/components/HeroSection";
 import WhoWeAreSection from "@/components/WhoWeAreSection";
 import CeoSection from "@/components/CeoSection";
-//import BusinessPartnersSection from "@/components/BusinessPartnersSection";
 import ServicesSection from "@/components/ServicesSection";
 import PartnersSection from "@/components/PartnersSection";
 import CareersSection from "@/components/CareersSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
-  // Removed introComplete state
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +23,6 @@ const Index = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          // Once the animation is triggered, we can unobserve the element
           observer.unobserve(entry.target);
         }
       });
@@ -37,15 +33,26 @@ const Index = () => {
       const revealElements = document.querySelectorAll(".reveal");
       revealElements.forEach((el) => observer.observe(el));
       setLoading(false);
+
+      // Check for stored scroll target first
+      const storedScrollTarget = sessionStorage.getItem('scrollTarget');
+      if (storedScrollTarget) {
+        // Add a small delay to ensure the DOM is ready
+        setTimeout(() => {
+          const targetElement = document.getElementById(storedScrollTarget);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+          sessionStorage.removeItem('scrollTarget');
+        }, 100);
+      }
     }, 500);
 
     return () => {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, []); // Removed introComplete dependency
-
-  // Removed handleIntroComplete function
+  }, []);
 
   if (loading) {
     return (

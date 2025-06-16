@@ -1,10 +1,37 @@
 import { Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isIndexPage = location.pathname === "/";
+
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+
+    if (!isIndexPage) {
+      // If not on index page, navigate to index page with the hash
+      // Remove the '#' from sectionId when storing in sessionStorage
+      const cleanSectionId = sectionId.replace("#", "");
+      sessionStorage.setItem("scrollTarget", cleanSectionId);
+      navigate("/");
+      return;
+    }
+
+    // If already on index page, just scroll to the section
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer
       id="contact"
-      className="bg-gradient-to-r from-blue-950 to-blue-900 pt-16 pb-8 px-4 relative z-10"
+      className="bg-gradient-to-r from-blue-950 to-blue-950 pt-16 pb-8 px-4 relative z-10"
     >
       {/* Subtle circuit pattern background */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -70,7 +97,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/i-c-d-/"
                 className="text-white/70 hover:text-blue-300 transition-colors icon-spin"
               >
                 <Linkedin size={20} />
@@ -89,40 +116,45 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#hero"
+                  href={isIndexPage ? "#hero" : "/#hero"}
                   className="text-white/70 hover:text-icd-blue transition-colors"
+                  onClick={(e) => handleNavigation(e, "#hero")}
                 >
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#who-we-are"
+                  href={isIndexPage ? "#who-we-are" : "/#who-we-are"}
                   className="text-white/70 hover:text-icd-blue transition-colors"
+                  onClick={(e) => handleNavigation(e, "#who-we-are")}
                 >
                   About Us
                 </a>
               </li>
               <li>
                 <a
-                  href="#services"
+                  href={isIndexPage ? "#services" : "/#services"}
                   className="text-white/70 hover:text-icd-blue transition-colors"
+                  onClick={(e) => handleNavigation(e, "#services")}
                 >
                   Services
                 </a>
               </li>
               <li>
                 <a
-                  href="#partners"
+                  href={isIndexPage ? "#partners" : "/#partners"}
                   className="text-white/70 hover:text-icd-blue transition-colors"
+                  onClick={(e) => handleNavigation(e, "#partners")}
                 >
                   Partners
                 </a>
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href={isIndexPage ? "#contact" : "/#contact"}
                   className="text-white/70 hover:text-icd-blue transition-colors"
+                  onClick={(e) => handleNavigation(e, "#contact")}
                 >
                   Contact
                 </a>

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isIndexPage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +51,17 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
+    
+    if (!isIndexPage) {
+      // If not on index page, navigate to index page with the hash
+      // Remove the '#' from sectionId when storing in sessionStorage
+      const cleanSectionId = sectionId.replace('#', '');
+      sessionStorage.setItem('scrollTarget', cleanSectionId);
+      navigate('/');
+      return;
+    }
+    
+    // If already on index page, just scroll to the section
     const element = document.querySelector(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -70,7 +85,7 @@ const Navbar = () => {
         <div className="absolute inset-0 bg-blue-700/10 blur-xl rounded-full opacity-50 pointer-events-none"></div>
 
         <a
-          href="#hero"
+          href={isIndexPage ? "#hero" : "/#hero"}
           className="flex items-center space-x-2 relative"
           onClick={(e) => {
             e.preventDefault();
@@ -90,7 +105,7 @@ const Navbar = () => {
           {navLinks.map((link, index) => (
             <a
               key={link.name}
-              href={link.href}
+              href={isIndexPage ? link.href : `/${link.href}`}
               className="text-white hover:text-blue-300 transition-all duration-300 text-sm font-futuristic relative group"
               onClick={(e) => {
                 e.preventDefault();
@@ -141,7 +156,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
+                href={isIndexPage ? link.href : `/${link.href}`}
                 className="text-white hover:text-icd-blue py-2 transition-colors text-sm font-medium"
                 onClick={(e) => {
                   e.preventDefault();

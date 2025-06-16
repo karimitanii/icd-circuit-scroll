@@ -57,12 +57,7 @@ const ServiceDetail = () => {
               Home
             </Link>
             <span className="mx-2">›</span>
-            <Link
-              to="/#services"
-              className="hover:text-white transition-colors"
-            >
-              Services
-            </Link>
+            Services
             <span className="mx-2">›</span>
             <span className="text-white">{service.title}</span>
           </div>

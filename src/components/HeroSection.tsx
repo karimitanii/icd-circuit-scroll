@@ -85,7 +85,7 @@ function HeroSection() {
         >
           Let's talk about the future <br />
           <span className="text-light-blue">
-            Innovation, Creativity, and Development
+            Innovation, Creativity, Development
           </span>
         </h1>
 
