@@ -110,7 +110,7 @@ const ServiceDetail = () => {
                 Overview
               </h2>
               <p className="mb-4">
-                {service.details?.overview || 
+                {service.details?.overview ||
                   `Our ${service.title} services provide comprehensive solutions
                   tailored to your organization's specific needs. With years of
                   experience and a team of experts, we deliver cutting-edge
@@ -144,7 +144,9 @@ const ServiceDetail = () => {
                         <strong className="text-blue-300">
                           {feature.split(":")[0] || feature}
                         </strong>{" "}
-                        {feature.includes(":") ? `- ${feature.split(":")[1]}` : ""}
+                        {feature.includes(":")
+                          ? `- ${feature.split(":")[1]}`
+                          : ""}
                       </div>
                     </li>
                   ))
@@ -211,9 +213,9 @@ const ServiceDetail = () => {
                           Assessment & Analysis
                         </h3>
                         <p>
-                          We begin by thoroughly understanding your current systems,
-                          processes, and challenges to identify opportunities for
-                          improvement.
+                          We begin by thoroughly understanding your current
+                          systems, processes, and challenges to identify
+                          opportunities for improvement.
                         </p>
                       </div>
                     </div>
@@ -283,8 +285,15 @@ const ServiceDetail = () => {
                 our team to discuss your specific needs and how we can help.
               </p>
               <Link
-                to="/#contact"
+                to="#contact"
                 className="block w-full py-3 px-4 bg-blue-700 hover:bg-blue-600 text-white text-center rounded-lg transition-colors font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector('#contact');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Request a Consultation
               </Link>

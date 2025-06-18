@@ -181,7 +181,7 @@ const Footer = () => {
                 >
                   <Mail size={16} />
                 </a>
-                <span>icd-careers@gmail.com</span>
+                <span>careers.at.icd@gmail.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <a

@@ -116,7 +116,7 @@ function CareersSection() {
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 p-6 bg-blue-600/30 backdrop-blur-sm rounded-lg relative z-10">
                 <a
                   ref={iconRef}
-                  href="mailto:icd-careers@gmail.com"
+                  href="mailto:careers.at.icd@gmail.com"
                   className="mail-icon flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full text-white cursor-pointer hover:bg-blue-400 transition-colors border border-blue-300/30"
                   aria-label="Send email to careers"
                 >
@@ -131,7 +131,7 @@ function CareersSection() {
                     className="text-white hover:text-blue-200 font-bold text-lg flex items-center gap-2 transition-colors"
                     href="mailto:icd-careers@gmail.com"
                   >
-                    <span>icd-careers@gmail.com</span>
+                    <span>careers.at.icd@gmail.com</span>
                   </a>
                 </div>
               </div>
